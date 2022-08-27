@@ -1,0 +1,8 @@
+._pages {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    z-index: 0;
+    background: #fff;
+    box-sizing: border-box;
+}

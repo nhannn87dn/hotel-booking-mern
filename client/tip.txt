@@ -1,0 +1,3 @@
+(.*)className="(.*)"(.*)
+
+$1className={styles.$2}$3
