@@ -1,0 +1,41 @@
+.section_restaurant{
+    position: relative;
+    box-sizing: border-box;
+    padding: 2em 50px;
+    background-color: #FCFCFD;
+}
+
+.section_heading{
+    margin-top: 10px;
+    font-size: 1.9375rem;
+    font-family: "Noto Serif",serif;
+    font-weight: 400;
+    color: #222;
+}
+.restaurant_wrapper {
+    display: flex;
+}
+.restaurant_photo, .restaurant_content{
+    flex-basis: 50%;
+}
+.restaurant_content {
+    padding-left: 90px;
+    box-sizing: border-box;
+}
+@media (max-width: 769px){
+    .restaurant_wrapper {
+        flex-direction: column;
+    }
+    .restaurant_photo, .restaurant_content{
+        flex-basis: 100%;
+        flex: 1;
+    }
+    .restaurant_content {
+        padding-left: 0;
+    }
+   
+   
+}
+@media (max-width: 480px){
+    .section_restaurant {padding: 2em 1em;}
+}

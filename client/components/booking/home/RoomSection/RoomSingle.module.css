@@ -1,0 +1,38 @@
+.room_item {
+    flex-basis: calc((100% - 60px) / 3);
+    background-color: #fff;
+    -webkit-box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
+    box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
+
+}
+.room_thumb {
+    position: relative;
+}
+.room_detail {
+    padding: 2em;
+}
+.room_detail .room_name a{
+    font-weight: 500;
+    font-size: 18px;
+    font-size: 1.125rem;
+    margin-bottom: .5em;
+}
+
+@media (min-width: 768px){
+    .room_detail{
+        padding: 1em;
+    }
+    .room_name  {
+        line-height: 1.1;
+        margin-bottom: 1em;
+    }
+   
+   
+}
+
+@media (max-width: 480px){
+    .room_item {
+        flex-basis: 100%;
+    }
+   
+}

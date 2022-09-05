@@ -5,12 +5,12 @@ import { useRouter } from 'next/router';
 import styles from './Header.module.css';
 import { IoPersonOutline } from "react-icons/io5";
 
-
-function Header() {
+/* Mặc định là header nền trắng */
+function Header({whiteBg = true}) {
   const router = useRouter();
   const {pathname} = router;
-  const homeHeaderClass = pathname === '/' ? styles.site_header + " " + styles.home_header : styles.site_header;
-  const logoName = pathname === '/' ? 'logo' : 'logo-gold';
+  const homeHeaderClass = whiteBg ?  styles.site_header : styles.site_header + " " + styles.home_header;
+  const logoName = whiteBg ? 'logo-gold' : 'logo';
   const [toggleMenu, setToggleMenu] = React.useState(false);
   const toggled = toggleMenu ? styles.main_navigation + (" ") + styles.main_navigation_toggled : styles.main_navigation ;
 
@@ -53,12 +53,7 @@ function Header() {
               <a>Rooms</a>
               </Link>{" "}
             </li>
-            <li>
-              {" "}
-              <Link href="/restaurant">
-              <a>Restaurant</a>
-              </Link>{" "}
-            </li>
+            
            
             <li>
               {" "}

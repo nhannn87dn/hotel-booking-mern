@@ -31,10 +31,10 @@ function Footer() {
                 <h4 className={styles.widget_title}>For Customers</h4>
                 <ul className={styles.menu_footer}>
                   <li>
-                  <Link href="#"><a>About</a></Link>
+                  <Link href="/about"><a>About</a></Link>
                   </li>
                   <li>
-                  <Link href="#"><a>Customer Care/Help</a></Link>
+                  <Link href="/contact"><a>Customer Care/Help</a></Link>
                   </li>
                   <li>
                   <Link href="#"><a>Corporate Accounts</a></Link>
@@ -51,19 +51,19 @@ function Footer() {
                 <h4 className={styles.widget_title}>Us Services</h4>
                 <ul className={styles.menu_footer}>
                   <li>
-                  <Link href="#"><a>About</a></Link>
+                  <Link href="#"><a>Rooms</a></Link>
                   </li>
                   <li>
-                  <Link href="#"><a>Customer Care/Help</a></Link>
+                  <Link href="#"><a>Restaurant & Bar</a></Link>
                   </li>
                   <li>
-                  <Link href="#"><a>Corporate Accounts</a></Link>
+                  <Link href="#"><a>Meeting & Event</a></Link>
                   </li>
                   <li>
-                  <Link href="#"><a>Financial Information</a></Link>
+                  <Link href="#"><a>Airport transfer</a></Link>
                   </li>
                   <li>
-                  <Link href="#"><a>Terms - Conditions</a></Link>
+                  <Link href="#"><a>Spa & Wellness</a></Link>
                   </li>
                 </ul>
               </div>
@@ -71,7 +71,7 @@ function Footer() {
                 <h4 className={styles.widget_title}>Contact Us</h4>
                 <div className={styles.textwidget}>
                   <p><IoLocationOutline /> 3015 Grand Ave, Coconut Grove, Merrick Way, FL 12345</p>
-                  <p><IoMailOpenOutline /> hello@luviana.com</p>
+                  <p><IoMailOpenOutline /> hello@sochi.com</p>
                   <p><IoCallOutline /> 1.954.456.6789</p>
                   <p><IoChatboxEllipsesOutline /> 24/7 Customer Service</p>
                 </div>
