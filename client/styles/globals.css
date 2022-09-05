@@ -19,12 +19,12 @@ body {
   margin: 0;
   padding: 0;
 }
-
-body, textarea {
+body, button, input, select, optgroup, textarea {
   color: #5f6060;
-  font-size: 16px !important;
-  font-size: 1rem !important;
-  line-height: 1.75 !important;
+  font-family: "Open Sans",sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
 p {
@@ -85,8 +85,9 @@ input[type=text]:focus, input[type=password]:focus,  input[type=email]:focus, in
   border-color: #c1b086;
 }
 
-textarea{
+textarea, select{
   border: 1px solid;
+  background-color: #fff;
   border-color: #c1b086;
   border-radius: 5px;
   font-size: 12px;
@@ -95,6 +96,21 @@ textarea{
   padding: 10px;
   outline: none;
   -webkit-appearance: none
+}
+select {
+  border-radius: 1.875rem;
+  min-width: 100px;
+  line-height: 1.2;
+  padding: 1.5835em 2em;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .5em;
+  color: #3e3f46;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: .875rem;
 }
 
 ::-webkit-input-placeholder { /* Edge */
@@ -178,6 +194,12 @@ a {
 }
 
 
+/*
+Grid Custom Flex
+ */
+
+
+
 @media (min-width: 992px){
   .site_content {
      min-height: 350px;
@@ -188,5 +210,9 @@ a {
 @media (min-width: 768px){
   .site_content {
     min-height: 350px;
+  }
+
+  .section_columns {
+      flex-wrap: nowrap;
   }
 }

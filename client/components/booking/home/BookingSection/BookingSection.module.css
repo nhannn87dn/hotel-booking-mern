@@ -1,0 +1,88 @@
+.section_booking_form{
+    position: relative;
+    box-sizing: border-box;
+    padding: 2em 50px;
+}
+.booking_form_flex {
+    display: flex;
+    margin: -7rem auto 0;
+}
+.booking_form {
+    flex: 1;
+    background-color: #242F5A;
+    box-sizing: border-box;
+    display: flex;
+    padding: 2em;
+    justify-content: space-between;
+}
+.booking_form  label {
+    color: #e5e8eb;
+    font-size: 14px;
+    font-size: .875rem;
+}
+.booking_form input, .booking_form select {
+    background-color: #252e59;
+    border-color: rgba(127,160,198,.14);
+    color: #8b9fb9;
+    border-radius: 0;
+    font-size: 1rem;
+    padding: .687em 1em;
+}
+
+.booking_form .input_date, .booking_form .input_person {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.booking_search {
+    flex-basis: 16.667%;
+    box-sizing: border-box;
+}
+
+.booking_submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+}
+
+
+ @media (max-width: 769px){
+    .booking_form_flex{
+        flex-direction: column;
+    }
+    .booking_form {
+        justify-content: unset;
+        flex-wrap: wrap;
+        column-gap: 1em;
+        row-gap: 1em;
+        box-sizing: border-box;
+    }
+    .booking_form .input_date {
+        flex-basis: 48.5%;
+        box-sizing: border-box;
+    }
+    .booking_form .input_date input{
+        width: 100%;
+    }
+    .booking_form .input_person {
+        flex-basis: 31.3%;
+        box-sizing: border-box;
+    }
+   
+}
+@media (max-width: 480px){
+    .section_booking_form{
+        padding: 1em;
+    }
+    .booking_form .input_date {
+        flex-basis: 100%;
+        box-sizing: border-box;
+    }
+    .booking_form .input_person {
+        flex-basis: calc((100% - 20px) / 2);
+        box-sizing: border-box;
+    }
+}

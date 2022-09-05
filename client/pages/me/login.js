@@ -13,7 +13,7 @@ import { IoHomeOutline } from "react-icons/io5";
 function Login() {
 
   const bg_style = {
-      background: 'linear-gradient(0deg,#222,rgb(0,0,0,.5)), url(/images/g1.jpg)'
+      background: 'linear-gradient(0deg,#222,rgb(0,0,0,.1)), url(/images/gallery/g2.jpg)'
   };
 
   return (
