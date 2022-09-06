@@ -1,9 +1,6 @@
-import Head from 'next/head'
-import Image from "next/image";
+import Head from 'next/head';
 import Link from "next/link";
-import Footer from '../../components/me/layout/Footer';
-import Header from '../../components/me/layout/Header';
-import Layout from '../../components/me/layout/Layout';
+import {Footer, Header, Footer} from '../../components/me/layout';
 import styles from '../../styles/Me.module.css';
 
 /**

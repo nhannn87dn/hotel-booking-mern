@@ -6,7 +6,7 @@ import styles from "./BookingSection.module.css";
 function BookingSection() {
   const [startDate, setStartDate] = useState(new Date());
   let date = new Date();
-  const [endDate, setEndDate] = useState(date.setDate(date.getDate() + 1));
+  const [endDate, setEndDate] = useState(date.setDate(date.getDate() + 2));
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [numberRoom, setNumberRoom] = useState(1);
