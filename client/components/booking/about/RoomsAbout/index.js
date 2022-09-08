@@ -18,17 +18,17 @@ function RoomsAbout() {
           </div>
         </div>
       </div>
-      <div className="flex_columns column_gap_2">
-        <div className="flex_column">
+      <div className={styles.flex_columns_4 + " flex_columns column_gap_2"}>
+        <div className={styles.flex_column_4 + " flex_column"}>
           <Image layout='responsive'  width={284} height={284} src='/images/gallery/g3.jpg' />
         </div>
-        <div className="flex_column">
+        <div className={styles.flex_column_4 + " flex_column"}>
         <Image  layout='responsive' width={284} height={284} src='/images/gallery/g4.jpg' />
         </div>
-        <div className="flex_column">
+        <div className={styles.flex_column_4 + " flex_column"}>
           <Image layout='responsive' width={284} height={284} src='/images/gallery/g5.jpg' />
         </div>
-        <div className="flex_column">
+        <div className={styles.flex_column_4 + " flex_column"}>
         <Image layout='responsive' width={284} height={284} src='/images/gallery/g6.jpg' />
         </div>
       </div>

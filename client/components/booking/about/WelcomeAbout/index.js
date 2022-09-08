@@ -18,11 +18,11 @@ function WelcomeAbout() {
           </div>
         </div>
       </div>
-      <div className="flex_columns column_gap_2">
-        <div className="flex_column">
+      <div className={styles.flex_columns_2 + " flex_columns column_gap_2"}>
+        <div className={styles.flex_column_2 + " flex_column"}>
           <Image layout='responsive' width={569} height={569} src='/images/gallery/g1.jpg' />
         </div>
-        <div className="flex_column">
+        <div className={styles.flex_column_2 + " flex_column"}>
           <Image layout='responsive' width={569} height={569} src='/images/gallery/g2.jpg' />
         </div>
       </div>

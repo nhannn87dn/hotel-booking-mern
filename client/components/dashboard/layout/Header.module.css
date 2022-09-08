@@ -1,0 +1,42 @@
+
+.sidebar_button{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  .sidebar_button svg{
+    font-size: 35px;
+    margin-right: 10px;
+  }
+  .quick_links {
+    color: #9aa5b1;
+  }
+  
+   .profile_details{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 0 0 2px;
+  }
+  .profile_details img{
+    height: 40px;
+    width: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  .profile_details .admin_name{
+    font-size: 15px;
+    font-weight: 500;
+    color: #9aa5b1;
+    margin: 0 10px;
+    white-space: nowrap;
+  }
+  .profile_details svg{
+    font-size: 20px;
+    color: #9aa5b1;
+  }
+  
+  @media (max-width: 700px) {
+    .quick_links {display: none;}
+  }

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../../components/me/layout/Layout';
+import { Fragment } from 'react';
 import {LoginForm, SideBox} from '../../components/me';
 import styles from '../../styles/Me.module.css';
 
@@ -13,8 +13,8 @@ function Login() {
 
  
   return (
-    <Layout>
-
+   
+    <Fragment>
       <Head>
         <title>Me Login | Hotel Booking</title>
         <meta content="noindex,noffolow" name="robots"/>
@@ -25,8 +25,8 @@ function Login() {
           <SideBox />
           <LoginForm />
       </div>
-
-    </Layout>
+      </Fragment>
+   
   )
 }
 

@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Layout from '../../components/dashboard/layout/Layout'
-import LoginForm from '../../components/dashboard/Login';
+import { Fragment } from 'react';
+import LoginForm from '../../components/dashboard/LoginForm';
 
 function Login() {
   return (
-    <Layout>
+    <Fragment>
        <Head>
           <title>Login | Hotel Booking</title>
           <meta content="noindex,noffolow" name="robots"/>
@@ -12,7 +12,7 @@ function Login() {
         </Head>
       <LoginForm />
        
-    </Layout>
+    </Fragment>
   )
 }
 

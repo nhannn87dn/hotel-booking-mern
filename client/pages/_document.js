@@ -1,6 +1,7 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class MyDocument extends Document {
+
   render() {
     return (
       <Html lang="en">
@@ -15,7 +16,7 @@ class MyDocument extends Document {
             <meta name="resource-type" content="Document" />
             <meta name="distribution" content="Global" />
             <meta name="revisit-after" content="1 days" />
-            <link type="image/x-icon" href="favicon.ico" rel="shortcut icon" />
+            <link type="image/x-icon" href="/favicon.ico" rel="shortcut icon" />
         </Head>
         <body>
           <Main />

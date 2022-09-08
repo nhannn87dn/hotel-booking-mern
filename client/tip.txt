@@ -1,3 +1,8 @@
+Classs to Module
 (.*)className="(.*)"(.*)
 
 $1className={styles.$2}$3
+
+Module to Classs
+(.*)className=\{styles.(.*)\}(.*)
+$1className="$2"$3

@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import Layout from '../../components/me/layout/Layout';
+import { Fragment } from 'react';
 import styles from '../../styles/Me.module.css';
-import VerifyForm from '../../components/me/VerifyForm';
-import SideBox from '../../components/me/SideBox';
+import {VerifyForm, SideBox} from '../../components/me';
 /**
  * Show form điền email đã Booking
  * Hệ thống sẽ xác nhận và send một OTP vào email
@@ -16,7 +15,7 @@ function Index() {
   };
 
   return (
-    <Layout>
+    <Fragment>
 
       <Head>
         <title>Me Verify | Hotel Booking</title>
@@ -29,7 +28,7 @@ function Index() {
           <VerifyForm />
       </div>
 
-    </Layout>
+    </Fragment>
   )
 }
 
