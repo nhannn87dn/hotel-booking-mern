@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Link from "next/link";
-import {Footer, Header, Footer} from '../../components/me/layout';
+
+import {Layout} from '../../components/me/layout';
 import styles from '../../styles/Me.module.css';
 
 /**
@@ -16,12 +16,9 @@ function Booking() {
         <meta content="noindex,noffolow" name="robots"/>
         <link rel="canonical" href="/me/booking" />
       </Head>
-      <Header />
-      <div className={styles.site_content}>
+     
       Me Booking
-      </div>
-      
-      <Footer />
+     
       </Layout>
   )
 }

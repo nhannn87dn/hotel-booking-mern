@@ -1,3 +1,9 @@
 .section_wrapper{
     padding: 0 5em;
 }
+@media (max-width: 480px){
+    .section_wrapper{
+        padding: 0 2em;
+    }
+    
+}

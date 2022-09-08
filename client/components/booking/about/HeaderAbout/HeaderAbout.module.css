@@ -10,3 +10,12 @@
     max-width: 70%;
     margin: 0 auto;
 }
+
+@media (max-width: 480px){
+    .section_header_about{
+        padding: 8rem 1rem 5rem;
+    }
+    .section_desc {
+        max-width: 90%;
+    } 
+}
