@@ -18,7 +18,7 @@ const storageImages = multer.diskStorage({
 
 const storageFiles = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, path.join(__dirname, '../public/' + config.upload.img_dir));
+        cb(null, path.join(__dirname, '../public/' + config.upload.file_dir));
     },
 
     // By default, multer removes file extensions so let's add them back

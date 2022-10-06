@@ -4,7 +4,7 @@ const {objectId} = require('./custom.validation');
 
 const uploads = {
   params: Joi.object().keys({
-    type: Joi.string().required().valid("image", "file").default("file"),
+    typeFile: Joi.string().required().valid("image", "file").default("file"),
   }),
 };
 

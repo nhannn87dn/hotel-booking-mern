@@ -35,7 +35,7 @@ const createRoom = catchAsync(async (req, res)=> {
      *  */ 
     let upload = multer({
         storage: multerConfig.storageImages,
-        limits: { fileSize: multerSize(config.upload.imgMaxSize) },
+        limits: { fileSize: multerSize.strToBytes(config.upload.imgMaxSize) },
         fileFilter: multerConfig.imageFilter,
     }).array("images", 10);
     

@@ -15,16 +15,22 @@ const bodyParser = require('body-parser');
 // initialize express
 const app = express();
 
-// parse application/json
-app.use(bodyParser.json())
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(function (req, res,next) {
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+// POST /login gets urlencoded bodies
+app.post('/up', function (req, res) {
   console.log('bodyParser',req);
-  next()
+  res.send('welcome, ' + req.body.username)
 })
 
+// POST /api/users gets JSON bodies
+app.post('/jp', function (req, res) {
+  res.send('welcome, ' + req.body.username)
+});
 // logger
 app.use(requestLogger);
 
