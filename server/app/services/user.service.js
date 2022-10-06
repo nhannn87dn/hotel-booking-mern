@@ -11,15 +11,18 @@ const getUser = async (id)=> {
 
 const getUsers = async (pageNumber)=> {
 
-    let pageSize = 25; // number records per a page
-  
+    const pageSize = 25; // number records per a page
+    const userCount = await User.countDocuments();
+
     const users = await User.find()
       .select('-password -__v')
       .sort({name:-1})
       .skip((pageNumber - 1) * pageSize)
       .limit(pageSize);
    
-    return users;
+      const filteredUserCount = users.length;
+
+      return [{ pageSize, userCount, filteredUserCount, users }];
 };
 
 
@@ -52,12 +55,13 @@ const updateUser = async (id,userBody)=> {
     return result;
 }
 
+//TODO delete messages replied by User Id
 const deleteUser = async(id) =>{
     const user = await getUser(id);
     if(!user){
         throw new AppError('User not Found', 400);
     }
-    await user.remove();
+    await user.remove({_id: ObjectId(user._id)});
     var result = _.pick(user, ['name', 'email', 'role', 'isEmailVerified']);
     return result;
 }

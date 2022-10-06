@@ -47,7 +47,7 @@ module.exports = logger;
 module.exports.requestLogger = expressWinston.logger({
   transports: [new winston.transports.Console()],
   format: winston.format.combine(winston.format.json(), winston.format.prettyPrint()),
-  meta: false,
+  meta: true,
   msg: 'HTTP {{req.method}} {{req.url}}',
   expressFormat: true,
   colorize: false,

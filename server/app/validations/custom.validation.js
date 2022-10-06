@@ -12,6 +12,15 @@ const passwordStrong = (value, helpers) => {
     return value;
 }
 
+/* Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character */
+const passwordVeryStrong = (value, helpers) => {
+    if(!value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)){
+        return helpers.message('Password invalid');
+    }
+    return value;
+}
+
+
 
 
 const objectId =  (value, helpers) => {
@@ -24,5 +33,6 @@ const objectId =  (value, helpers) => {
 module.exports = {
     password,
     passwordStrong,
+    passwordVeryStrong,
     objectId
 }

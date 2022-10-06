@@ -19,7 +19,9 @@ const authLogin = async (userBody) => {
     if(!invalidPasword) throw new AppError('Invalid email or password', 400);
     
     const token = user.generateAuthToken();
-    return token;
+    /* Only select fields necessary */
+    var result = _.pick(user, ['_id', 'name', 'email']);
+    return [{user: result, token}];
 }
 
 module.exports = {

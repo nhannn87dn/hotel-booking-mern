@@ -19,15 +19,25 @@ const envVarSchema = Joi.object().keys({
 const { value: envVars, error} = envVarSchema
 .prefs({
   errors:{label: "key"}
-}).validate(process.env);
+})
+.validate(process.env);
 
 if(error){
     throw new Error(`Config validation error: ${error.message} `);
 }
 
 module.exports = {
+    publicUrl: envVars.PUBLIC_URL,
     env: envVars.NODE_ENV,
     port: envVars.PORT,
     mongoose: {url: envVars.MONGO_URI, name: envVars.MONGO_COLLECTION},
     jwt: {secure_key: envVars.JWT_SECURE_KEY},
+    mail: {host: envVars.NODE_MAIL_HOST, port: envVars.NODE_MAIL_PORT, user: envVars.NODE_MAIL_USER, pass: envVars.NODE_MAIL_PASS},
+    upload: {
+        img_dir:  envVars.STORAGE_IMAGES_DIR,
+        imgMaxSize: envVars.MAX_SIZE_IMAGES_BYTES,
+        file_dir: envVars.STORAGE_FILES_DIR,
+        fileMaxSize: envVars.MAX_SIZE_FILES_BYTES,
+
+    },
 }

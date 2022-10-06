@@ -1,0 +1,15 @@
+###
+# create new user
+POST http://localhost:3001/api/v1/customers HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+    "name": "Customer Demo",
+    "email": "customer@gmail.com",
+    "mobile": "+84988071443",
+    "birthday": "1988-12-22",
+    "address": "113 ngoc hoi",
+    "country": "Vietnam",
+    "zipCode": "55000"
+}

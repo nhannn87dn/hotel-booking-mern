@@ -1,2 +1,9 @@
 module.exports.role = require('./role');
 module.exports.authorize = require('./authorize');
+module.exports.mailer = require('./mailer');
+module.exports.multerSize = require('./multerSize');
+module.exports.requestHandler = require('./requestHandler');
+module.exports.AppError = require('./AppError');
+module.exports.catchAsync = require('./catchAsync');
+module.exports.randomString = require('./randomString');
+module.exports.fileSizeConvert = require('./fileSizeConvert');

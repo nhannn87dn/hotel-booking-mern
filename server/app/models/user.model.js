@@ -84,6 +84,11 @@ userSchema.methods.generateAuthToken = function () {
   return token;
 }
 
+// Virtual for this genre instance URL.
+userSchema.virtual("url").get(function () {
+  return "/users/" + this._id;
+});
+
 
 userSchema.pre("save", async function (next) {
   const rounds = 10; // what you want number for round password

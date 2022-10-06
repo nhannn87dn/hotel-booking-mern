@@ -4,11 +4,23 @@ const { userController } = require("../../app/controllers");
 const { userValidation } = require("../../app/validations");
 const { validate, auth } = require("../../app/middlewares");
 const { authorize, role } = require("../../app/utils");
+
+
+
 /**
- *  User Management
+ *  Public Requests
  */
 
+
+
+/**
+ *  Private Management
+ */
+
+// @GET:  /api/v1/users
 router.get("/", auth, authorize(role.admin), userController.getUsers);
+
+// @GET:  /api/v1/users/:id
 router.get(
   "/:id",
   auth,
@@ -16,6 +28,8 @@ router.get(
   validate(userValidation.getUser),
   userController.getUser
 );
+
+// @POST:  /api/v1/users/:id
 router.post(
   "/",
   auth,
@@ -23,6 +37,8 @@ router.post(
   validate(userValidation.createUser),
   userController.createUser
 );
+
+// @PUT:  /api/v1/users/:id
 router.put(
   "/:id",
   auth,
@@ -30,10 +46,12 @@ router.put(
   validate(userValidation.updateUser),
   userController.updateUser
 );
+
+// @DELETE:  /api/v1/users/:id
 router.delete(
   "/:id",
-  authorize(role.admin),
   auth,
+  authorize(role.admin),
   validate(userValidation.deleteUser),
   userController.deleteUser
 );

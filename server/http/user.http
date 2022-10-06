@@ -13,7 +13,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmMDg4M
 # create new user
 POST http://localhost:3001/api/v1/users HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFmMDg4MDNhMmJlMjI3ZjA4NWFlODciLCJlbWFpbCI6ImNvbmdkb25nQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYyOTc4Mjg1fQ.LSYMmZRTjHgQ5Vo_BKaowEuYX4sxSMdtNEzaE3aNfZo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
 
 {
     "name": "Ngoc Nhan",

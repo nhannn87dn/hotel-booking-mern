@@ -9,12 +9,36 @@ const { cpuPercentage, rateLimit, errorHandler } = require("./middlewares");
 const { requestLogger } = require("../config/logger");
 const router = require('../routes/v1');
 const mongoSanitize = require('express-mongo-sanitize');
+const path = require('path');
+const bodyParser = require('body-parser');
 
 // initialize express
 const app = express();
 
+// parse application/json
+app.use(bodyParser.json())
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(function (req, res,next) {
+  console.log('bodyParser',req);
+  next()
+})
+
 // logger
 app.use(requestLogger);
+
+//Prevent HTTP Parameter Pollution
+app.use(hpp());
+// Data sanitization against XSS(clean user input from malicious HTML code)
+app.use(xss());
+app.use(mongoSanitize());
+
+
+// public for upload files
+app.use(express.static(path.join(__dirname, '../public')));
+
+
 
 // compress all responses
 app.use(compression());
@@ -50,18 +74,6 @@ app.use((req, res, next) => {
   }
 });
 
-//Prevent HTTP Parameter Pollution
-app.use(hpp());
-// Data sanitization against XSS(clean user input from malicious HTML code)
-app.use(xss());
-app.use(mongoSanitize());
-//middleware
-// Body parser, reading data from body into req.body
-app.use(express.json({
-  limit: '16mb'
-}));
-
-app.use(express.urlencoded({ limit: '16mb',extended: true }));
 
 /// Initialize the route handling
 app.use('/api',router);
