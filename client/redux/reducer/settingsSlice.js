@@ -1,15 +1,6 @@
 import axios from 'axios'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
-
-const initialState = {
-  loading: false,
-  success: false,
-  settings: {},
-  error: false,
-  message: ''
-}
-
 /*
   AsyncThunk Actions
   Alway before the Slice
@@ -31,7 +22,13 @@ export const getSettings = createAsyncThunk('setting/getSettings',  async () => 
 /** Slice */
 const settingsSlice = createSlice({
   name: 'setting',
-  initialState,
+  initialState: {
+    loading: false,
+    success: false,
+    settings: {},
+    error: false,
+    message: ''
+  },
   reducers: {
     updateMessage: (state, action) => {
       state.message = action.payload

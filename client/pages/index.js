@@ -107,14 +107,14 @@ function Index () {
 
   return (
    
-    <Layout pageId="_home" settings={settings}>
+    <Layout pageId="_home">
      
       <Head>
-        <title>{settings && settings.metaTitle.length ? settings.metaTitle : null} | Hotel Booking</title>
+        <title>Sochi Hotel | Hotel Booking</title>
         <link rel="canonical" href="/" />
-        <meta property="og:title" content="" />
-        <meta property="og:description" content="" />
-        <meta property="og:site_name" content="" />
+        <meta property="og:title" content="Sochi Hotel" />
+        <meta property="og:description" content="Sochi Hotel" />
+        <meta property="og:site_name" content="Sochi Hotel" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="vi_VN" />
         <meta property="og:url" itemprop="url" content="/" />

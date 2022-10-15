@@ -16,15 +16,12 @@ import { wrapper } from "../../redux/store";
 import { localStorageHelper } from "../../utils/localStorageHelper";
 
 export default function Rooms() {
-  const { loading, success, error, message, rooms } = useSelector(roomsSelector);
+  const { loading, success, error, rooms } = useSelector(roomsSelector);
   
   const [clicked, setClicked] = React.useState(false);
   const dispatch = useDispatch();
   
-  // /* first time, get all room */
-  // useEffect(() => {
-  //   dispatch(getAllRooms({}));
-  // }, []);
+
   /* when clicked Search room width filter conditions */
   const handleClicked = (v) => {
 
@@ -43,6 +40,11 @@ export default function Rooms() {
     dispatch(filterRooms(filters));
     setClicked(true);
   };
+
+  const handleClickRemoveFilters = ()=> {
+    dispatch(getAllRooms());
+    setClicked(false)
+  }
 
   return (
     <Layout pageId="_rooms">
@@ -76,7 +78,7 @@ export default function Rooms() {
       {clicked && !loading && success && !error && rooms.data.filteredCount ? (
         <div>
           Found <strong>{rooms.data.filteredCount}</strong> results matching
-          your search terms
+          your search terms. <span onClick={handleClickRemoveFilters} className="badges_remove">Remove Filters</span>
         </div>
       ) : (
         <h2>All of Rooms & Suites</h2>
@@ -96,6 +98,16 @@ export default function Rooms() {
           padding: 30px;
           text-align: center;
         }
+        .badges_remove {
+          background: #f2dede;
+          color:#b94a48;
+          border:1px solid #eed3d7;
+          padding: 5px 10px;
+          font-size: 12px;
+          border-radius:20px;
+          cursor:pointer
+        }
+        
       `}</style>
     </Layout>
   );
