@@ -30,6 +30,7 @@ module.exports = {
     publicUrl: envVars.PUBLIC_URL,
     env: envVars.NODE_ENV,
     port: envVars.PORT,
+    timezone: {city: envVars.TIMEZONE_CITY, offset: envVars.TIMEZONE_OFFSET},
     mongoose: {url: envVars.MONGO_URI, name: envVars.MONGO_COLLECTION},
     jwt: {secure_key: envVars.JWT_SECURE_KEY},
     mail: {host: envVars.NODE_MAIL_HOST, port: envVars.NODE_MAIL_PORT, user: envVars.NODE_MAIL_USER, pass: envVars.NODE_MAIL_PASS},

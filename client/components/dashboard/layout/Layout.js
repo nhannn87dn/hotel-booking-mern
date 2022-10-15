@@ -12,7 +12,7 @@ export default function Layout({ children, pageId = '' }) {
     setCollapse(pre=>!pre);
   }
   return (
-    <main className={styles._layout+ " " +pageId}>
+    <main className={styles._layout+ " dashboard " +pageId}>
       <section className={toggledSidebar}>
         <div className={styles.logo_details} >
           <span className={styles.logo_icon}>
@@ -24,7 +24,7 @@ export default function Layout({ children, pageId = '' }) {
       </section>
       <section className={styles.home_section}>
         <nav className={styles.navigation}>
-          <div className={styles.sidebar_button}onClick={handleonClickLogo}>
+          <div className={styles.sidebar_button} onClick={handleonClickLogo}>
          {collapse ?  <IoMenu /> : <IoEllipsisVertical />  } 
         </div>
           <Header />

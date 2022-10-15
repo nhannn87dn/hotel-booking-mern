@@ -1,116 +1,98 @@
+import axios from 'axios'
 import Head from 'next/head'
-import Image from "next/image";
-import Link from "next/link";
-import styles from '../../styles/Rooms.module.css';
-import Header from '../../components/booking/layout/Header';
-import Footer from '../../components/booking/layout/Footer';
+import styles from '../../styles/booking/RoomDetail.module.css';
 import Layout from '../../components/booking/layout/Layout';
+import PagesHeader from '../../components/booking/PagesHeader';
 
-export default function Room({ roomId, title }) {
+import BookingForm from '../../components/booking/room/BookingForm';
+import PriceBlock from '../../components/booking/room/PriceBlock';
+import ContentBlock from '../../components/booking/room/ContentBlock';
+import GalleryBlock from '../../components/booking/room/GalleryBlock';
+import AmenitiesBlock from '../../components/booking/room/AmenitiesBlock';
 
-  function addRoomJsonLd() {
-    return {
-      __html: `{
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": "Executive Anvil",
-      "image": [
-        "https://example.com/photos/1x1/photo.jpg",
-        "https://example.com/photos/4x3/photo.jpg",
-        "https://example.com/photos/16x9/photo.jpg"
-       ],
-      "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
-      "sku": "0446310786",
-      "mpn": "925872",
-      "brand": {
-        "@type": "Brand",
-        "name": "ACME"
-      },
-      "review": {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "4",
-          "bestRating": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Fred Benson"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.4",
-        "reviewCount": "89"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://example.com/anvil",
-        "priceCurrency": "USD",
-        "price": "119.99",
-        "priceValidUntil": "2020-11-20",
-        "itemCondition": "https://schema.org/UsedCondition",
-        "availability": "https://schema.org/InStock"
-      }
-    }
-  `,
-    };
-  }
+export default function Room({room}) {
+  
+  console.log(room.images)
 
   return (
 
     <Layout pageId='_rooms_list'>
       <Head>
-        <title>{`Rooms ${title} | Hotel Booking`}</title>
+        <title>{`${room.metaTitle} | Hotel Booking`}</title>
 
-        <link rel="canonical" href={`/roomms/${roomId}`} />
+        <link rel="canonical" href={`/roomms/${room._id}`} />
       
-        <meta property="og:title" content={`Rooms ${title} | Hotel Booking`} />
-        <meta property="og:description" content={`Rooms ${title} | Hotel Booking`} />
-        <meta property="og:site_name" content={`Rooms ${title} | Hotel Booking`} />
+        <meta property="og:title" content={`${room.metaTitle} | Hotel Booking`} />
+        <meta property="og:description" content={`${room.metaDescription} | Hotel Booking`} />
+        <meta property="og:site_name" content="Sochi Hotel" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="vi_VN" />    
-        <meta property="og:url" itemprop="url" content={`/roomms/${roomId}`} />
+        <meta property="og:url" itemprop="url" content={`/roomms/${room._id}`} />
         <meta itemprop="image" content="/images/logo.png" />
         <meta property="og:image" content="/images/logo.png" />
         <meta property="og:image:secure_url" itemprop="thumbnailUrl" content="/images/logo.png" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={addRoomJsonLd()}
-          key="room-jsonld"
-        />
+       
       </Head>
-
-      <Header />
-      <div className={styles.site_content}>
-        <main className={styles.main}>
-          <h1 className={styles.title}>{ title }</h1>
-          <p>Room ID: { roomId }</p>
-        </main>
+      <PagesHeader heading={room.name}>
+      {room.shortDesc}
+      </PagesHeader>
+      <div className={styles.flex_columns_gap + " flex_columns"}>
+        <aside className={styles.flex_main + " flex_column"}>
+            <GalleryBlock gallery={room.images}/>
+            <ContentBlock content={room.content} />
+            <AmenitiesBlock attributes={room.attributes} />
+            <h3 className={styles.heading}>Helpful Details</h3>
+            <div className={styles.helpful}>
+              <p><strong>Room Occupancy</strong></p>
+               <p>All the rooms above are guaranteed to fit guest. Extra guests are at the hotel's discretion and may be subject to additional fees.</p> 
+               <p><strong>Check-in/out</strong></p>
+               <p>Check-in is at 14:00 PM and Check-out is at 12:00 PM.</p>
+            </div>
+            <h3 className={styles.heading}>Property on Map</h3>
+        </aside>
+        <aside className={styles.flex_sidebar + " flex_column"}>
+          
+            <div className={styles.sidebar_form}>
+              <PriceBlock price={room.pricePerNight} promoPrice={room.pricePromote} />
+              <BookingForm roomId={room._id} />
+            </div>
+         
+          
+        </aside>
       </div>
-      <Footer />
     </Layout>
     
   )
 }
+// https://nextjs.org/docs/api-reference/data-fetching/get-static-props#getstaticprops-return-values
+export async function getStaticProps({ params }) {
+  
+  const { data } = await axios.get(`${process.env.apiEndPoint}/v1/rooms/${params.roomId}/details`);
+  const room = data.data;
+  console.log("getStaticProps",data);
 
-export async function getStaticProps({ params = {} } = {}) {
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      roomId: params.roomId,
-      title: `Room ${params.roomId}`
+      room
     }
   }
 }
-
+/**
+ * https://nextjs.org/docs/basic-features/data-fetching/get-static-paths#generating-paths-on-demand
+ */
 export async function getStaticPaths() {
-  const paths = [...new Array(5)].map((i, index) => {
-    return {
-      params: {
-        roomId: `${index + 1}`,
-      }
-    };
-  });
+
+  // Call an external API endpoint to get posts
+    const { data } = await axios.get(process.env.apiEndPoint + '/v1/rooms/list');
+    const paths = data.data.allRooms.map((room) => ({ params: { roomId: room._id } }));
+ 
+
   return {
     paths,
     fallback: false,

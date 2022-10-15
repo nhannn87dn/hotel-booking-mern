@@ -51,7 +51,7 @@ function MenuSideBar() {
               <span className={styles.links_icon}>
                 <IoShieldCheckmark />
               </span>
-              <span className={styles.links_name}>User</span>
+              <span className={styles.links_name}>Administrator</span>
             </a>
           </Link>
         </li>
@@ -82,7 +82,7 @@ function MenuSideBar() {
               <span className={styles.links_icon}>
                 <IoSettings />
               </span>
-              <span className={styles.links_name}>Setting</span>
+              <span className={styles.links_name}>Settings</span>
             </a>
           </Link>
         </li>

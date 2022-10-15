@@ -1,9 +1,12 @@
 const rateLimit = require("express-rate-limit");
 rateLimit({
-  windowMs: 12 * 60 * 60 * 1000, //   Window time interval in which user can make requests
+  windowMs: 60 * 60 * 1000, //  1 hour
   max: 5000, //Maximum number of requests user can make in the given interval
-  message: "Please slow down ! ", // message to be displayed to user after exhauting the limit
+  message: "Too many accounts created from this IP, please try again after an hour ", // message to be displayed to user after exhauting the limit
   headers: true,
+  statusCode: 429,
+  handler: (request, response, next, options) =>
+		response.status(options.statusCode).json(options),
 });
 
 module.exports = rateLimit;

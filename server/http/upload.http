@@ -1,29 +1,12 @@
 
+### ---------------------------- UPLOAD FEED IMAGES ----------------------------
 
-POST /api/v1/uploads/file HTTP/1.1
-Host: localhost:3001
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
-Content-Length: 200
+POST http://localhost:3001/api/v1/upload HTTP/1.1
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ----WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="files"; filename="/C:/Users/nhan/Downloads/file.txt"
-Content-Type: text/plain
-
-(data)
-----WebKitFormBoundary7MA4YWxkTrZu0gW
-
-###
-
-POST /api/v1/uploads/image HTTP/1.1
-Host: localhost:3001
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
-Content-Length: 202
-Content-Type: multipart/form-data; boundary=----boundary
-
-----boundary
-Content-Disposition: form-data; name="files"; filename="/C:/Users/nhan/Downloads/surface.png"
+Content-Disposition: form-data; name="profile_pic"; filename="/C:/Users/nhan/Downloads/logo-asus-149x40.png"
 Content-Type: image/png
 
 (data)
-----boundary
+----WebKitFormBoundary7MA4YWxkTrZu0gW

@@ -23,6 +23,7 @@ const createCustomer = catchAsync(async (req, res)=> {
 });
 
 const updateCustomer = catchAsync(async (req, res)=> {
+    const id = req.params.id;
     const customer = await customerService.updateCustomer(id,req.body);
     requestHandler.sendSuccess(res,'successful')({customer});
 });

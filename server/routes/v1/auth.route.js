@@ -13,15 +13,20 @@ const {validate} = require("../../app/middlewares");
 router.post("/", validate(authValidation.authLogin), authController.authLogin);
 
 
-router.post("/refresh-token/:id", (req,res, next)=> {
-    res.status(200).send({message: 'refresh-token'});
+router.post("/verifyToken", (req,res, next)=> {
+    res.status(200).json({message: 'verifyToken'});
+});
+
+
+router.post("/refreshToken", (req,res, next)=> {
+    res.status(200).json({message: 'refresh-token'});
 });
 
 // @POST:  /api/v1/auth/logout
 router.post("/logout", (req,res, next)=> {
-    res.status(200).send({message: 'logouted'});
+    res.status(200).json({message: 'logouted'});
 });
 
-//TODO: verifyToken 
+
 
 module.exports = router;

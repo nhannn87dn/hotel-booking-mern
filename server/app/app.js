@@ -12,25 +12,25 @@ const mongoSanitize = require('express-mongo-sanitize');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+
 // initialize express
 const app = express();
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+// for parsing application/json
+app.use(
+    bodyParser.json({
+        limit: "16mb",
+    })
+);
+// for parsing application/xwww-form-urlencoded
+app.use(
+    bodyParser.urlencoded({
+        limit: "16mb",
+        extended: true,
+    })
+);
 
-// POST /login gets urlencoded bodies
-app.post('/up', function (req, res) {
-  console.log('bodyParser',req);
-  res.send('welcome, ' + req.body.username)
-})
-
-// POST /api/users gets JSON bodies
-app.post('/jp', function (req, res) {
-  res.send('welcome, ' + req.body.username)
-});
 // logger
 app.use(requestLogger);
 
@@ -66,7 +66,7 @@ app.use(
   helmet.hidePoweredBy()
 );
 // Rate limitter for DDOS attacks
-app.use(rateLimit());
+//app.use(rateLimit());
 
 
 //Server Overload Notifier
@@ -74,7 +74,11 @@ app.use((req, res, next) => {
   if (toobusy()) {
     // log if you see necessary
     console.log(cpuPercentage());
-    res.send(503, "Server Too Busy");
+    res.status(503).json({
+      error: "error",
+      code: 503,
+      message: "Server too busy"
+    });
   } else {
     next();
   }

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const {generateOTP} = require('../utils/randomString');
-const bcrypt = require("bcrypt");
 const jwt = require('jsonwebtoken');
 const config = require('../../config/config');
+const moment = require('moment');
 
 const { Schema } = mongoose;
 const customerSchema = new Schema(
@@ -39,33 +39,41 @@ const customerSchema = new Schema(
     mobile: {
         type: String,
         trim: true,
-        required: true,
         lowercase: true,
-        minLength: [10, 'Address cannot exceed 10 characters']
+        default: ''
     },
     address: {
         type: String,
-        required: true,
-        minLength: [4, 'Address cannot exceed 4 characters']
+        default: ''
     },
     avatar: {
-        type: String
+        type: String,
+        default: ''
     },
     country: {
-        type: String
+        type: String,
+        default: ''
     },
     zipCode: {
-        type: Number
+        type: Number,
+        default: 0
     },
     otp: {
         type: String,
+        default: '',
         expires:'5m',
         index:true
     },
     isDelete: {
-        type: Boolean,
-        default: false
-    }
+      type: Boolean,
+      enum: [true, false],
+      default: false,
+    },
+    isBanned: {
+      type: Boolean,
+      enum: [true, false],
+      default: false,
+    },
 },
 { timestamps: true }
 );
@@ -91,6 +99,15 @@ customerSchema.methods.generateAuthToken = function () {
   const token = jwt.sign({_id: this.id, email: this.email, mobile: this.mobile},config.jwt.secure_key);
   return token;
 }
+
+
+/* convert YYYY-MM-DD to YYYY-MM-DD 12:00:00*/
+customerSchema.pre("save", async function (next) {
+  this.birthday = moment.utc(this.birthday).format("YYYY-MM-DD hh:mm:ssZ");
+  this.createdAt = moment.utc(this.createdAt).format("YYYY-MM-DD hh:mm:ssZ");
+  this.updatedAt = moment.utc(this.updatedAt).format("YYYY-MM-DD hh:mm:ssZ");
+  next();
+});
 
 
 const Customer = new mongoose.model("Customer", customerSchema);

@@ -3,8 +3,6 @@ const _ = require("lodash");
 
 const validate = (schema) => (req, res, next) => {
    
-    console.log('validate');
-
     const validateSchema = _.pick(schema,["params","body","query"]);
     const object = _.pick(req,Object.keys(validateSchema));
     const {value, error} = Joi.compile(validateSchema).prefs({

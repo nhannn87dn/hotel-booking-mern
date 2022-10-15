@@ -1,0 +1,33 @@
+.price {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ededed;
+    margin-bottom: 1.875rem;
+    color: #222;
+}
+.price_currency {
+    vertical-align: text-top;
+    font-size: 60%;
+}
+.price strong {
+    font-size: 1.875rem;
+}
+
+.price_period {
+    font-size: .875rem;
+    color: #5f6060;
+    position: relative;
+    vertical-align: middle;
+}
+.price_period::before{
+    content: '/';
+    margin-right: .25rem;
+}
+.price_discount {
+    vertical-align: middle;
+    color: #c1b086;
+    margin-left: 15px;
+}
+.regular_price {
+    font-size: .9rem;
+    color: #999;
+}

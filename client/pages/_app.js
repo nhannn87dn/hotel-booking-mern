@@ -1,16 +1,9 @@
+import '../styles/global/globals.css';
+import '../styles/global/gridflex.css';
 
-import '../styles/globals.css';
-import '../styles/gridflex.css';
-import { useRouter } from 'next/router';
-
+import { wrapper  } from '../redux/store';
 
 function MyApp({ Component, pageProps }) {
-
-  return (
-  
-      <Component {...pageProps} />
-   
-  )
+  return <Component {...pageProps} />
 }
-
-export default MyApp
+export default wrapper.withRedux(MyApp)

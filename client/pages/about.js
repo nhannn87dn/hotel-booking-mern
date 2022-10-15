@@ -1,13 +1,13 @@
 import Head from "next/head";
-import { Header, Footer, Layout } from "../components/booking/layout";
+import { Layout } from "../components/booking/layout";
 import {
-  HeaderAbout,
   WelcomeAbout,
   RoomsAbout,
   HistoryAbout,
 } from "../components/booking/about";
+import PagesHeader from "../components/booking/PagesHeader";
 
-export default function Home() {
+export default function About() {
   return (
     <Layout pageId="_about">
       <Head>
@@ -29,13 +29,13 @@ export default function Home() {
           content="/images/logo.png"
         />
       </Head>
-
-      <Header />
-      <HeaderAbout />
+      <PagesHeader heading="About Sochi">
+        The Hotel Luviana is the right choice for visitors who are searching for a combination of charm, peace, quiet and a convenient position from where to explore surroundings.
+      </PagesHeader>
       <WelcomeAbout />
       <RoomsAbout />
       <HistoryAbout />
-      <Footer />
+     
     </Layout>
   );
 }

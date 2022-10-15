@@ -1,0 +1,32 @@
+.heading {
+    font-weight: bold;
+    margin-bottom: 1em;
+    color:#c1b086;
+    margin: 1.5em 0;
+
+}
+.amenities_list {
+    display: flex;
+    margin: 10px 0;
+    column-gap: 2em;
+    row-gap: 1em;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.amenities_list li {
+    flex-basis: calc((100% - 4em) / 3);
+}
+.amenities_list li::before {
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    justify-content: center;
+    background-color: #444;
+    display: inline-flex;
+    color: #fff;
+    content: "✓";
+    font-weight: bold;
+    margin-right: 10px;
+}

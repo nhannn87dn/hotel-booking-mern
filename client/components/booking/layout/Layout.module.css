@@ -6,3 +6,29 @@
     background: #fff;
     box-sizing: border-box;
 }
+
+.site_content {
+    position: relative;
+    padding: 8rem 5rem 5rem;
+    min-height: 380px;
+  }
+ ._home  .site_content {
+    padding: 0rem 0rem 5rem;
+ }
+
+  @media (max-width:921px){
+    
+    .site_content {
+        padding: 7rem 2rem 2rem;
+    }
+    
+   
+}
+
+@media (max-width:766px){
+    .site_content {
+        padding: 6rem 1rem 2rem;
+    }
+   
+    
+}   

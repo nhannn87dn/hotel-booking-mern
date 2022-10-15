@@ -1,0 +1,12 @@
+.content {
+    margin: 2em 0;
+}
+.content p {
+    margin: 0 0 1.5em;
+}
+.heading {
+    font-weight: bold;
+    margin-bottom: 1em;
+    color:#c1b086;
+    margin: 1.5em 0;
+}

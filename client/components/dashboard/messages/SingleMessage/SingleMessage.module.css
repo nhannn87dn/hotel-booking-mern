@@ -1,0 +1,18 @@
+.contact_email {
+    font-weight: 500;
+    margin-left: 20px;
+    color: #777;
+}
+.contact_date {
+    margin-right: 1em;
+}
+.contact_more {
+    padding: 5px 10px !important;
+    background: 0;
+    color: #555;
+    border: none;
+}
+.contact_more:hover{
+    background: #fff !important;
+    border-color: #fff !important;
+}

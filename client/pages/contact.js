@@ -1,9 +1,9 @@
 import Head from 'next/head';
-import {Header, Footer, Layout} from '../components/booking/layout';
-import {HeaderContact, BodyContact} from '../components/booking/contact';
+import {Layout} from '../components/booking/layout';
+import {BodyContact} from '../components/booking/contact';
+import PagesHeader from '../components/booking/PagesHeader';
 
-
-export default function Home() {
+export default function Contact() {
   return (
     <Layout pageId='_contact'>
       <Head>
@@ -22,11 +22,12 @@ export default function Home() {
         <meta property="og:image:secure_url" itemprop="thumbnailUrl" content="/images/logo.png" />
        
       </Head>
-
-      <Header />
-      <HeaderContact />
+    
+      <PagesHeader heading='Contact Us' >
+      Feel free to contact us directly if you have any inquiries regarding accommodation. We would love to have you stay with us!
+      </PagesHeader>
       <BodyContact />
-      <Footer />
+     
     </Layout>
   )
 }

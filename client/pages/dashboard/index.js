@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import {Layout} from '../../components/dashboard/layout';
-import styles from  '../../styles/Dashboard.module.css';
+import styles from  '../../styles/dashboard/Dashboard.module.css';
 import { IoCartOutline, IoArrowDownCircle, IoArrowUpCircle } from "react-icons/io5";
 
 
@@ -89,14 +89,14 @@ function Index() {
                
                 <div className='stack'>
                   <button>Primary</button>
-                  <button className='btn_dark'>Dark</button>
-                  <button className='btn_default'>Cancle</button>
+                  <button className='btn_dark'>Dark btn_dark</button>
+                  <button className='btn_default'>Cancle btn_default</button>
                 </div>
             </form>
                 
           </div>
           <div className='flex_column'>
-              <div className="box">
+              <div className="box box_border">
                 <div className="box_title">Box Title</div>
                 <div className="bd">Body</div>
               </div>

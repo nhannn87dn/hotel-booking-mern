@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
+const moment = require('moment');
 
 const { Schema } = mongoose;
 const roomSchema = new Schema(
@@ -8,7 +8,39 @@ const roomSchema = new Schema(
         type: String,
         required: [true, 'Please enter room name'],
         trim: true,
-        maxLength: [100, 'Room name cannot exceed 100 characters']
+        minLength: [4, 'Name must be at least 4 characters'],
+        maxLength: [160, 'Room name cannot exceed 160 characters']
+    },
+    slug: {
+        type: String,
+        lowercase: true,
+        required: true,
+    },
+    isHot: {
+        type: Boolean,
+        enum: [true, false],
+        default: false
+    },
+    shortDesc: {
+        type: String,
+        maxLength: [255, 'shortDesc name cannot exceed 255 characters']
+    },
+    numOfRooms: {
+        type: Number,
+        default: 1,
+        min: 1,
+        required: [true, 'Please enter number of room in type Room'],
+    },
+    numOfAdults: {
+        type: Number,
+        required: true,
+        default: 1,
+        min:1,
+    },
+    numOfChildren: {
+        type: Number,
+        default: 0,
+        min: 0,
     },
     metaTitle: {
         type: String,
@@ -26,21 +58,37 @@ const roomSchema = new Schema(
     pricePerNight: {
         type: Number,
         required: [true, 'Please enter room price per night'],
-        default: 0.0
+        default: 0,
+        min: 0
     },
     priceChildren: {
         type: Number,
         required: [true, 'Please enter room price per night for Children'],
-        default: 0.0
+        default: 0,
+        min: 0,
+        validate: {
+            validator: function(value) {
+                return value <= this.pricePerNight
+            },
+            message: props => `${props.value} have must be less than or equal to pricePerNight !`
+        },
     },
 
     isPromote: {
         type: Boolean,
+        enum: [true, false],
         default: false
     },
     pricePromote: {
         type: Number,
-        default: 0.0
+        default: 0.0,
+        min: 0,
+        validate: {
+            validator: function(value) {
+                return value < this.pricePerNight
+            },
+            message: props => `${props.value} have must be less than pricePerNight !`
+        },
     },
     promoteStartDate: {
         type: Date
@@ -52,13 +100,16 @@ const roomSchema = new Schema(
         type: String,
         trim: true
     },
-   
     guestCapacity: {
         type: Number,
+        default: 1,
+        min: 1,
         required: [true, 'Please enter room guest capacity'],
     },
     numOfBeds: {
         type: Number,
+        default: 1,
+        min: 1,
         required: [true, 'Please enter number of beds in room'],
     },
     typeOfBeds: {
@@ -73,50 +124,62 @@ const roomSchema = new Schema(
     attributes: [{
         internet: {
             type: Boolean,
+            enum: [true, false],
             default: true,
         },
         breakfast: {
             type: Boolean,
+            enum: [true, false],
             default: false,
         },
         airConditioned: {
             type: Boolean,
+            enum: [true, false],
             default: true,
         },
         petsAllowed: {
             type: Boolean,
+            enum: [true, false],
             default: false,
         },
         roomCleaning: {
             type: Boolean,
+            enum: [true, false],
             default: true,
         },
         miniBar: {
             type: Boolean,
+            enum: [true, false],
             default: false,
         },
         launDry: {
             type: Boolean,
+            enum: [true, false],
             default: false,
         },
         hairDryer: {
             type: Boolean,
+            enum: [true, false],
             default: true,
         },
         telephone: {
             type: Boolean,
+            enum: [true, false],
             default: true,
         },
         swimmingPool: {
             type: Boolean,
+            enum: [true, false],
             default: false,
         },
         balcony: {
             type: Boolean,
+            enum: [true, false],
             default: false,
         },
         smokeAllowed: {
             type: Boolean,
+            enum: [true, false],
             default: false,
         },
         view: {
@@ -133,7 +196,11 @@ const roomSchema = new Schema(
         type: Number,
         default: 0
     },
-    images: [],
+    images: [{
+        link: {
+            type: String
+        },
+    }],
     category: {
         type: String,
         required: [true, 'Please enter room category'],
@@ -180,17 +247,25 @@ const roomSchema = new Schema(
     },
     isDelete: {
         type: Boolean,
+        enum: [true, false],
         default: false
     },
     sortOrder: {
         type: Number,
-        default: 1
+        default: 1,
+        min: 1,
     },
    
   },
   { timestamps: true }
 );
 
+/* convert GMT +0 */
+roomSchema.pre("save", async function (next) {
+    this.createdAt = moment.utc(this.createdAt).format("YYYY-MM-DD hh:mm:ssZ");
+    this.updatedAt = moment.utc(this.updatedAt).format("YYYY-MM-DD hh:mm:ssZ");
+    next();
+});
 
 const Room = new mongoose.model("Room", roomSchema);
 module.exports = Room;

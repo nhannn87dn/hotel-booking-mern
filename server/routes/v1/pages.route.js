@@ -50,11 +50,13 @@ router.post(
       returnPath = config.publicUrl + config.upload.img_dir;
     }
 
+    console.log(maxSize);
+
     // 10 is the limit I've defined for number of uploaded files at once
     // 'multiple_images' is the name of our file input field
     let upload = multer({
       storage: storage,
-      limits: { fileSize: maxSize },
+      //limits: { fileSize: maxSize },
       fileFilter: fileFilter,
     }).array("files", 10);
 
@@ -64,8 +66,8 @@ router.post(
       } else if (err instanceof multer.MulterError) {
         throw new AppError(err.message, 400);
       } else if (err) {
-        //throw new AppError(err.message, 400);
-        console.log(err)
+        throw new AppError(err.message, 400);
+        //console.log(err)
       }
 
       let uploaded = [];

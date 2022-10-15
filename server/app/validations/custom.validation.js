@@ -20,6 +20,13 @@ const passwordVeryStrong = (value, helpers) => {
     return value;
 }
 
+/* only match yyyy-mm-dd */
+const dateFormat =  (value, helpers) => {
+    if(!value.match(/^(\d{4}-\d{2}-\d{2})/)){
+        return helpers.message(`${value} is Incorrect format allowed yyyy-mm-dd`);
+    }
+    return value;
+}
 
 
 
@@ -34,5 +41,6 @@ module.exports = {
     password,
     passwordStrong,
     passwordVeryStrong,
-    objectId
+    objectId,
+    dateFormat
 }

@@ -7,3 +7,5 @@ module.exports.AppError = require('./AppError');
 module.exports.catchAsync = require('./catchAsync');
 module.exports.randomString = require('./randomString');
 module.exports.fileSizeConvert = require('./fileSizeConvert');
+module.exports.daysBetween = require('./daysBetween');
+module.exports.addSlashes = require('./addSlashes');

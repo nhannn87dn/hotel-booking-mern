@@ -9,6 +9,8 @@ const meRoute = require("./me.route");
 const customerRoute = require("./customer.route");
 const roomRoute = require("./room.route");
 const bookingRoute = require("./booking.route");
+const paymentRoute = require("./payment.route");
+const settingRoute = require("./setting.route");
 
 const routes = [
   {
@@ -42,6 +44,14 @@ const routes = [
   {
     path: "/v1/bookings",
     route: bookingRoute,
+  },
+  {
+    path: "/v1/payments",
+    route: paymentRoute,
+  },
+  {
+    path: "/v1/settings",
+    route: settingRoute,
   },
 ];
 

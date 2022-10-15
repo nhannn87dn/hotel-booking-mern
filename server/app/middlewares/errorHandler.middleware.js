@@ -48,7 +48,8 @@ const sendErrorProd = (err, res) => {
   
       // 2) Send generic message
       res.status(500).json({
-        status: 'error',
+        status: 500,
+        code: err.statusCode,
         message: 'Something went very wrong!'
       });
     }
@@ -72,16 +73,15 @@ const handleValidationErrorDB = err => {
 
 const  returnError = (err, req, res, next) =>{
 
-    err.statusCode = err.statusCode || 500;
-    err.status = err.status || 'error';
+    err.status = err.statusCode || 500;
 
     if (config.env === 'development') {
         sendErrorDev(err, res);
     } else if (config.env === 'production') {
         let error = { ...err, message: err.message };
-        if (error.name === 'CastError') error = handleCastErrorDB(error);
+        if (error.name === 'CastErrorDB') error = handleCastErrorDB(error);
         if (error.code === 11000) error = handleDuplicateFieldsDB(error);
-        if (error.name === 'ValidationError') error = handleValidationErrorDB(error);
+        if (error.name === 'ValidationErrorDB') error = handleValidationErrorDB(error);
         
         sendErrorProd(error, res);
     }

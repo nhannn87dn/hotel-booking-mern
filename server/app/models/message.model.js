@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const moment = require('moment');
 
 const { Schema } = mongoose;
 const messageSchema = new Schema(
@@ -30,8 +31,8 @@ const messageSchema = new Schema(
     mobile: {
         type: String,
         trim: true,
-        required: false,
         lowercase: true,
+        default: ''
     },
     content: {
         type: String,
@@ -52,6 +53,7 @@ const messageSchema = new Schema(
     adminNote: {
       type: String,
       trim: true,
+      default: ''
     },
     replied : [{
         user: {
@@ -82,6 +84,12 @@ messageSchema.virtual("url").get(function () {
   return "/messages/" + this._id;
 });
 
+/* convert GMT +0 */
+messageSchema.pre("save", async function (next) {
+  this.createdAt = moment.utc(this.createdAt).format("YYYY-MM-DD hh:mm:ssZ");
+  this.updatedAt = moment.utc(this.updatedAt).format("YYYY-MM-DD hh:mm:ssZ");
+  next();
+});
 
 const Message = new mongoose.model("Message", messageSchema);
 module.exports = Message;

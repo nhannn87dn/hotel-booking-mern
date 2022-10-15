@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import styles from "./BookingSection.module.css";
 
 function BookingSection() {
+  
   const [startDate, setStartDate] = useState(new Date());
   let date = new Date();
   const [endDate, setEndDate] = useState(date.setDate(date.getDate() + 2));
@@ -13,7 +14,14 @@ function BookingSection() {
 
   const handleClickSearch = (e) => {
     e.preventDefault();
-    console.log(startDate,endDate,adults,children,numberRoom);
+    
+    let startDateStr = new Date(startDate);
+    let dayOfStartDate = startDateStr.getFullYear()+"-"+startDateStr.getMonth()+"-"+startDateStr.getDate();
+
+    let endDateStr = new Date(endDate);
+    let dayOfEndDate = endDateStr.getFullYear()+"-"+endDateStr.getMonth()+"-"+endDateStr.getDate();
+
+    console.log(dayOfStartDate,dayOfEndDate);
   }
 
   

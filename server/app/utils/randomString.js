@@ -1,5 +1,5 @@
 // Make random string 
-const makeRandomString = (length=6) => {
+const makeRandomString = (length=8) => {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;

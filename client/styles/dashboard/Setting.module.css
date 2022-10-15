@@ -1,0 +1,31 @@
+/* custom react tabs */
+.tabs_list {
+    display: flex;
+    column-gap: .5em;
+    border-bottom: 1px solid #ddd;
+}
+.tab {
+    display: inline-flex;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    z-index: 1;
+    bottom: -1px;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0
+}
+.tab_selected {
+    border-bottom: 2px solid #142030;
+    font-weight: bold;
+    color: #142030;
+}
+
+.tab_panel{
+    display: none;
+}
+.tab_panel_selected {
+    display: block;
+    padding: 10px;
+   
+}
