@@ -9,16 +9,24 @@ const PORT = config.port || 3001;
 let server;
 
 /// Start the server
-
+const mongooseDbOptions = {
+    autoIndex: true, // Don't build indexes
+    maxPoolSize: 10, // Maintain up to 10 socket connections
+    serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
+    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+    family: 4, // Use IPv4, skip trying IPv6
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+};
 mongoose
-.connect(config.mongoose.url)
+.connect(`${config.mongoose.url}/${config.mongoose.name}`, mongooseDbOptions)
 .then(()=> {
     logger.info('Connected to MongoDB');
     server = app.listen(config.port, () => {
         console.log(`Listening on port ${config.port}`);
     });
 })
-.catch((err)=> logger.error("faild to connect to DB", err));
+.catch((err)=> logger.error("Failed to connect to DB", err));
 
 /// Catch All Uncaught Exceptions
 process.on('uncaughtException', error => {
@@ -29,14 +37,6 @@ process.on('uncaughtException', error => {
     }
 });
 
-
-process.on('uncaughtException', err => {
-    console.log(err.name, err.message);
-    console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
-
-    process.exit(1);
-
-});
 
 process.on('unhandledRejection', err => {
     console.log(err.name, err.message);

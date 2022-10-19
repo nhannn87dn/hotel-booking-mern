@@ -1,0 +1,35 @@
+# Me Login
+POST http://localhost:3001/api/v1/me HTTP/1.1
+content-type: application/json
+
+{
+    "email": "nhannn87dn@gmail.com"
+}
+
+### Me Verify
+POST http://localhost:3001/api/v1/me/verify HTTP/1.1
+content-type: application/json
+
+{
+    "email": "nhannn87dn@gmail.com",
+    "otp": "602341"
+}
+
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
+
+### Me dashboard no Token
+GET http://localhost:3001/api/v1/me HTTP/1.1
+
+
+### Me dashboard valid Token
+GET http://localhost:3001/api/v1/me HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
+
+### Me dashboard valid Token
+GET http://localhost:3001/api/v1/me/profile HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
+
+
+### Me dashboard valid Token
+POST http://localhost:3001/api/v1/me/verify_token HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY2MDA3ODQ1fQ.M6R9n6TuWbqUBpZX9Zixbve-byCBk64eHxoFfR3YhN4

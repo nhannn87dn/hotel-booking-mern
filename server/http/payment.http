@@ -1,0 +1,69 @@
+# create new Message
+POST http://localhost:3001/api/v1/payments HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+    "code": "cod",
+    "name": "Thanh toán sau - COD",
+    "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "enabled": true,
+    "isCod": true,
+    "isOnline": true
+}
+###
+# create new Message
+POST http://localhost:3001/api/v1/payments HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+    "code": "onepayvisa",
+    "name": "Thẻ VISA/MasterCard/JCB",
+    "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "enabled": true,
+    "isCod": false,
+    "isOnline": true
+}
+
+###
+# create new Message
+POST http://localhost:3001/api/v1/payments HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+    "code": "stripe",
+    "name": "Thẻ VISA/MasterCard/JCB",
+    "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+    "enabled": true,
+    "isCod": false,
+    "isOnline": true
+}
+
+###
+GET http://localhost:3001/api/v1/payments HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+###
+GET http://localhost:3001/api/v1/payments/list HTTP/1.1
+
+
+###
+GET http://localhost:3001/api/v1/payments/633fd2e3aafc8698e8cce4ee HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+
+### UPDATE
+
+
+PUT  http://localhost:3001/api/v1/payments/633fd2e3aafc8698e8cce4ee HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+    "config": "(
+    a: 1,
+    b: false
+    )"
+}

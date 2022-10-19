@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 import { IoPersonCircleOutline, IoPowerOutline } from "react-icons/io5";
 
 
-function Header() {
+function Header({me=null}) {
   const router = useRouter();
   const {pathname} = router;
   const homeHeaderClass = pathname === '/' ? styles.site_header + " " + styles.home_header : styles.site_header;
@@ -48,16 +48,11 @@ function Header() {
               <a>Profile</a>
               </Link>{" "}
             </li>
-            <li>
-              {" "}
-              <Link href="/me/booking">
-              <a>My Booking</a>
-              </Link>{" "}
-            </li>
+           
           </ul>
           <div className={styles.socials_menu_container}>
             <Link href="/me/profile">
-              <a><IoPersonCircleOutline /> Yourname</a>
+              <a><IoPersonCircleOutline /> {me.name}</a>
               </Link>{"  "}
               <Link href="/me/logout">
               <a><IoPowerOutline /> Logout</a>

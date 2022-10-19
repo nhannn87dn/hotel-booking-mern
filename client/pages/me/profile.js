@@ -1,30 +1,45 @@
 import Head from 'next/head'
-
+import {useEffect } from "react";
 import {Layout} from '../../components/me/layout';
-import styles from '../../styles/Me.module.css';
-
+import {useAuth} from "../../components/Auth"
+import { useRouter } from 'next/router';
 /**
  * Thông tin cơ bản khách hàng
  * 
  */
 
-function Profile() {
+function MeProfile() {
+  const {auth} = useAuth()
 
+  const router = useRouter()
+
+  console.log(auth)
+
+  useEffect(() => {
+      if(auth && !auth.isLoggedIn ){
+        router.push("/me/login")
+      }
+  },[auth])
   
-
   return (
-    <Layout>
+    <Layout me={auth}>
        <Head>
         <title>Me Profile | Hotel Booking</title>
         <meta content="noindex,noffolow" name="robots"/>
         <link rel="canonical" href="/me/profile" />
       </Head>
-    
-      Me Profile
-      
-     
-      </Layout>
+      Me Profile: {auth.name}
+    </Layout>
   )
 }
 
-export default Profile
+export default MeProfile
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+      userTypes: "me"
+    }
+  };
+}

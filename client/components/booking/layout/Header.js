@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import styles from './Header.module.css';
-import { IoPersonOutline } from "react-icons/io5";
+import { IoPersonOutline, IoPersonCircle, IoLogOut } from "react-icons/io5";
 
 /* Mặc định là header nền trắng */
-function Header({whiteBg = true}) {
+function Header({whiteBg = true, me=null}) {
   const router = useRouter();
   const {pathname} = router;
   const homeHeaderClass = whiteBg ?  styles.site_header : styles.site_header + " " + styles.home_header;
@@ -62,11 +62,23 @@ function Header({whiteBg = true}) {
               </Link>{" "}
             </li>
           </ul>
+          {!me ? (
             <div className={styles.socials_menu_container}>
-              <Link href="me">
+              <Link href="/me">
                 <a><IoPersonOutline /> Sign in</a>
-                </Link>{" "}
-          </div>
+              </Link>{" "}
+            </div>
+           )
+           : (
+            <div className={styles.socials_menu_container}>
+              <Link href="/me">
+                <a><IoPersonCircle /> {me.name}</a>
+              </Link>{" "}
+              <Link href="/me/logout">
+                <a><IoLogOut /> Logout</a>
+              </Link>{" "}
+            </div>
+           )}
           </div>
         </nav>
         

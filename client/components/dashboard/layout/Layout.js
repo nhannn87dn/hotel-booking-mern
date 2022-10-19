@@ -5,14 +5,14 @@ import Footer from "./Footer";
 import styles from "./Layout.module.css";
 import { IoLogoSlack, IoMenu, IoEllipsisVertical } from "react-icons/io5";
 
-export default function Layout({ children, pageId = '' }) {
+export default function Layout({ children, pageId = '',user=null }) {
   const [collapse, setCollapse] = React.useState(false);
   const toggledSidebar = collapse ? styles.sidebar + " " + styles.active : styles.sidebar;
   const handleonClickLogo = () => {
     setCollapse(pre=>!pre);
   }
   return (
-    <main className={styles._layout+ " " +pageId}>
+    <main className={styles._layout+ " dashboard " +pageId}>
       <section className={toggledSidebar}>
         <div className={styles.logo_details} >
           <span className={styles.logo_icon}>
@@ -24,10 +24,10 @@ export default function Layout({ children, pageId = '' }) {
       </section>
       <section className={styles.home_section}>
         <nav className={styles.navigation}>
-          <div className={styles.sidebar_button}onClick={handleonClickLogo}>
+          <div className={styles.sidebar_button} onClick={handleonClickLogo}>
          {collapse ?  <IoMenu /> : <IoEllipsisVertical />  } 
         </div>
-          <Header />
+          <Header user={user} />
         </nav>
         <div className={styles.home_content}>{children}</div>
         <Footer />

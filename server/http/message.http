@@ -1,0 +1,60 @@
+# create new Message
+POST http://localhost:3001/api/v1/messages HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Guest Contact",
+    "email": "guest@gmail.com",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+}
+###
+# create new Message
+POST http://localhost:3001/api/v1/messages HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Guest Jonh",
+    "email": "jonh@gmail.com",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+}
+
+###
+# GET All messages
+GET http://localhost:3001/api/v1/messages HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+###
+# GET  message by ID
+GET http://localhost:3001/api/v1/messages/633663e184009a5db45f3d3f HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+
+###
+# UPDATE  message by ID
+PUT http://localhost:3001/api/v1/messages/633666595acb954cccda1966 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+    "name": "Guest",
+    "email": "jonh@gmail.com",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+}
+
+###
+# DELETE  message by ID
+DELETE  http://localhost:3001/api/v1/messages/6336665a5acb954cccda1968 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+###
+# Reply  message by ID
+POST http://localhost:3001/api/v1/messages/633666595acb954cccda1966/reply HTTP/1.1
+content-type: application/json
+
+{
+    "user": "631c3fe8ed193981c34c47ce",
+    "content": "this is answer content second for this message. "
+}

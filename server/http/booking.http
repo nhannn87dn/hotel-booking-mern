@@ -1,0 +1,65 @@
+# public request
+### Create
+POST http://localhost:3001/api/v1/bookings/create HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
+content-type: application/json
+
+{
+    "paymentId": "633fd2e3aafc8698e8cce4ee",
+    "roomId": "633eddb9d3fd295dbe5de078",
+    "customer": "6337ff4f5ac593f1822939dd",
+    "note": "yeu cau",
+    "numOfRooms": 1,
+    "numOfAdults": 2,
+    "numOfChildren": 0,
+    "discount": 0,
+    "checkInDate": "2022-10-20",
+    "checkOutDate": "2022-10-24",
+    "pricePerNight": 29
+}
+
+### Create
+POST http://localhost:3001/api/v1/bookings/create HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
+content-type: application/json
+
+{
+    "room": "633efe975ba09351eed6cd81",
+    "numOfRooms":1,
+    "customer": "6337ff4f5ac593f1822939dd",
+    "checkInDate": "2022-10-17",
+    "checkOutDate": "2022-10-19",
+    "pricePerNight": 119,
+    "priceChildren": 75,
+    "numOfAdults": 2,
+    "paymentInfo": {
+        "payment": "633fd2e3aafc8698e8cce4ee"
+    }
+}
+
+
+### UPDATE
+PUT http://localhost:3001/api/v1/bookings/63416e7cacda4044387a5c64 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+content-type: application/json
+
+{
+    "status": "confirmed",
+    "note": "Đã gửi mail xác nhận",
+    "actions": [{
+        "user": "631c3fe8ed193981c34c47ce",
+        "message": "Admin Đã xác nhận"
+    }]
+}
+
+### Get All Bookings by CustomerID
+GET http://localhost:3001/api/v1/bookings/6337ff4f5ac593f1822939dd/list HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
+
+### Get a Booking details by CustomerID
+GET http://localhost:3001/api/v1/bookings/details/634e4d91c1eafe8a6deb9167 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
+
+### GET Bookings Admin
+GET http://localhost:3001/api/v1/bookings HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8

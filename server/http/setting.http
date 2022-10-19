@@ -1,0 +1,19 @@
+### UPDATE
+PUT http://localhost:3001/api/v1/settings HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+content-type: application/json
+
+{
+    "appName": "Booking Hotel",
+    "metaTitle": "Sochi Hotel Best Choise for your holidays",
+    "metaDescription": "Sochi Hotel Best Choise for your holidays. Booking now !",
+    "hotline": "1.954.456.6789",
+    "name": "Sochi Hotel",
+    "telephone": "1.954.456.6789",
+    "address": "3015 Grand Ave, Coconut Grove, Merrick Way, FL 12345",
+    "email": "hello@sochihotel.com",
+    "taxFee": 0.08
+}
+
+### GET all
+GET http://localhost:3001/api/v1/settings/list HTTP/1.1

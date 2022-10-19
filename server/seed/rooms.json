@@ -1,0 +1,152 @@
+[{
+  "_id": {
+    "$oid": "633eddb9d3fd295dbe5de078"
+  },
+  "metaTitle": "Standard Single Room best Price",
+  "metaDescription": "Standard Single Rooms are designed in open-concept living area and have many facilities. Best Price. Booking now !",
+  "pricePerNight": 29,
+  "priceChildren": 75,
+  "isPromote": false,
+  "pricePromote": 0,
+  "content": "Standard Single Rooms are designed in open-concept living area and have many facilities",
+  "guestCapacity": 2,
+  "numOfBeds": 1,
+  "typeOfBeds": "Single",
+  "area": "20m2",
+  "attributes": [],
+  "ratings": 4,
+  "numOfReviews": 10,
+  "images": [
+    {
+      "link": "/uploads/images/g1-1665072623983.jpg",
+      "_id": {
+        "$oid": "633efdf05ba09351eed6cd7b"
+      }
+    },
+    {
+      "link": "/uploads/images/g2-1665072623989.jpg",
+      "_id": {
+        "$oid": "633efdf05ba09351eed6cd7c"
+      }
+    }
+  ],
+  "category": "Single",
+  "reviews": [],
+  "user": {
+    "$oid": "631c3fe8ed193981c34c47ce"
+  },
+  "isDelete": false,
+  "sortOrder": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1665064377576"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1665072624040"
+    }
+  },
+  "__v": 19,
+  "numOfRooms": 6,
+  "name": "Standard Single Room",
+  "isHot": true,
+  "shortDesc": "Standard Single Rooms are designed in open-concept living area and have many facilities"
+},{
+  "_id": {
+    "$oid": "633efe975ba09351eed6cd81"
+  },
+  "name": "Superior Double Room",
+  "metaTitle": "Superior Double Room best Price",
+  "metaDescription": "Superior Double Room are designed in open-concept living area and have many facilities. Best Price. Booking now !",
+  "pricePerNight": 129,
+  "priceChildren": 75,
+  "isPromote": false,
+  "pricePromote": 0,
+  "content": "Superior Double Rooms are perfectly equipped for traveling couples or friends",
+  "guestCapacity": 2,
+  "numOfBeds": 1,
+  "typeOfBeds": "Double",
+  "area": "30m2",
+  "attributes": [],
+  "ratings": 4,
+  "numOfReviews": 8,
+  "images": [
+    {
+      "link": "/uploads/images/g4-1665072873860.jpg",
+      "_id": {
+        "$oid": "633efee95ba09351eed6cd88"
+      }
+    },
+    {
+      "link": "/uploads/images/g5-1665072873864.jpg",
+      "_id": {
+        "$oid": "633efee95ba09351eed6cd89"
+      }
+    }
+  ],
+  "category": "Standard",
+  "reviews": [],
+  "user": {
+    "$oid": "631c3fe8ed193981c34c47ce"
+  },
+  "isDelete": false,
+  "sortOrder": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1665072791823"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1665562465000"
+    }
+  },
+  "__v": 1,
+  "numOfRooms": 2,
+  "numOfAdults": 2,
+  "numOfChildren": 0,
+  "isHot": true,
+  "shortDesc": "Superior Double Rooms are perfectly equipped for traveling couples or friends"
+},{
+  "_id": {
+    "$oid": "633fece9fc0ee7ca4b967ca2"
+  },
+  "name": "Classic Double Room",
+  "metaTitle": "Classic Double Room best Price",
+  "metaDescription": "Classic Double Room are designed in open-concept living area and have many facilities. Best Price. Booking now !",
+  "pricePerNight": 159,
+  "priceChildren": 75,
+  "isPromote": false,
+  "pricePromote": 0,
+  "content": "Have lots of in-room facilities and are designed in open-concept living area.",
+  "guestCapacity": 2,
+  "numOfBeds": 1,
+  "typeOfBeds": "Queen bed",
+  "area": "25m2",
+  "attributes": [],
+  "ratings": 5,
+  "numOfReviews": 36,
+  "images": [],
+  "category": "Double",
+  "reviews": [],
+  "user": {
+    "$oid": "631c3fe8ed193981c34c47ce"
+  },
+  "isDelete": false,
+  "sortOrder": 1,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1665133801470"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1665133801470"
+    }
+  },
+  "__v": 0,
+  "numOfRooms": 4,
+  "isHOt": true,
+  "shortDesc": "Have lots of in-room facilities and are designed in open-concept living area."
+}]

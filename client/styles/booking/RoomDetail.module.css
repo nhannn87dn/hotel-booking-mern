@@ -1,0 +1,36 @@
+.flex_columns_gap {
+    column-gap: 3em;
+}
+.flex_main {
+    flex: 1;
+}
+.flex_sidebar {
+   flex-basis: 370px;
+   flex-grow: 0;
+}
+
+.sidebar_form {
+    transition: all .3s ease-in-out;
+    box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
+    padding: 3em;
+}
+
+#sidebar_fixed, .sidebar_fixed {
+    position: fixed;
+    background-color: #fff;
+    top: 20px;
+    width: 370px;
+    z-index: 99;
+   
+}
+
+.heading {
+    font-weight: bold;
+    margin-bottom: 1em;
+    color:#c1b086;
+    margin: 1.5em 0;
+}
+
+.helpful p{
+    margin: 0 0 1.5em;
+}

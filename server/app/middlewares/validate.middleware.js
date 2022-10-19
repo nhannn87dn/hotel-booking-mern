@@ -2,6 +2,7 @@ const Joi = require("joi");
 const _ = require("lodash");
 
 const validate = (schema) => (req, res, next) => {
+   
     const validateSchema = _.pick(schema,["params","body","query"]);
     const object = _.pick(req,Object.keys(validateSchema));
     const {value, error} = Joi.compile(validateSchema).prefs({
@@ -16,6 +17,7 @@ const validate = (schema) => (req, res, next) => {
         const errorMessage = error.details.map((detail)=> detail.message).join(", ");
         return res.status(400).json({
             status: 400,
+            type: 'validateSchema',
             message: errorMessage
         })
     }

@@ -12,7 +12,7 @@ function FormContact() {
       <p> Providing you have any questions don’t hesitate to contact our team. We are always here to answer your questions.</p>
       <form method='POST'>
         <div className={styles.form_field}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Full Name</label>
           <input placeholder='Please enter your name' type='text' id='name' name='name' className={styles.input_form}  />  
         </div>
         <div className={styles.form_field}>

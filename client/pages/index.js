@@ -1,8 +1,8 @@
+import React, { useEffect } from "react";
 import Head from "next/head";
-import { Header, Footer, Layout } from "../components/booking/layout";
+import { Layout } from "../components/booking/layout";
 import {
   SlideShow,
-  BookingSection,
   AboutSection,
   AmenitiesSection,
   RoomSection,
@@ -10,47 +10,21 @@ import {
   RestaurantSection,
   GallerySection
 } from "../components/booking/home";
+import SearchRooms from "../components/booking/SearchRooms";
+import { useSelector } from "react-redux";
+import {settingSelector, getSettings} from "../redux/reducer/settingsSlice";
+import { wrapper } from "../redux/store";
+import {useAuth} from "../components/Auth";
+
+export const getStaticProps = wrapper.getStaticProps(store => async() => {
+  console.log('2. Page.getStaticProps uses the store to dispatch things');
+  await store.dispatch(getSettings());
+});
 
 
-export default function Home({ rooms, restaurant_type, gallery }) {
-  return (
-    <Layout pageId="_home">
-      <Head>
-        <title>Home | Hotel Booking</title>
-        <link rel="canonical" href="/" />
-        <meta property="og:title" content="Hotel Booking" />
-        <meta property="og:description" content="Hotel Booking" />
-        <meta property="og:site_name" content="Hotel Booking" />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="vi_VN" />
-        <meta property="og:url" itemprop="url" content="/" />
-        <meta itemprop="image" content="/images/logo.png" />
-        <meta property="og:image" content="/images/logo.png" />
-        <meta
-          property="og:image:secure_url"
-          itemprop="thumbnailUrl"
-          content="/images/logo.png"
-        />
-      </Head>
-
-      <Header whiteBg={false} />
-      <div className="site_content">
-        <SlideShow />
-        <BookingSection />
-        <AboutSection />
-        <AmenitiesSection />
-        <RoomSection rooms={rooms} />
-        <FeedbackSection />
-        <RestaurantSection restaurant_type={restaurant_type} />
-        <GallerySection gallery={gallery} />
-      </div>
-      <Footer />
-    </Layout>
-  );
-}
-
-export async function getStaticProps() {
-  // Get external data from the file system, API, DB, etc.
+function Index () {
+  const {settings: {data}} = useSelector(settingSelector);
+  const {auth} = useAuth()
 
   const rooms = [
     {
@@ -118,13 +92,42 @@ export async function getStaticProps() {
     { id: 8, link: "/images/gallery/g8.jpg", alt: "gallery 1" },
   ];
 
-  // The value of the `props` key will be
-  //  passed to the `Home` component
-  return {
-    props: {
-      rooms,
-      restaurant_type,
-      gallery,
-    },
-  };
+  return (
+   
+    <Layout pageId="_home" settings={data} me={auth}>
+     
+      <Head>
+        <title>{data.metaTitle} | Hotel Booking</title>
+        <link rel="canonical" href="/" />
+        <meta property="og:title" content="{data.metaTitle}" />
+        <meta property="og:description" content="{data.metaDescription}" />
+        <meta property="og:site_name" content="{data.name}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="vi_VN" />
+        <meta property="og:url" itemprop="url" content="/" />
+        <meta itemprop="image" content="/images/logo.png" />
+        <meta property="og:image" content="/images/logo.png" />
+        <meta
+          property="og:image:secure_url"
+          itemprop="thumbnailUrl"
+          content="/images/logo.png"
+        />
+      </Head>
+     
+    
+    
+        <SlideShow />
+        <SearchRooms page='home' />
+        <AboutSection />
+        <AmenitiesSection />
+        <RoomSection rooms={rooms} />
+        <FeedbackSection />
+        <RestaurantSection restaurant_type={restaurant_type} />
+        <GallerySection gallery={gallery} />
+     
+     
+    </Layout>
+  );
 }
+
+export default Index;
