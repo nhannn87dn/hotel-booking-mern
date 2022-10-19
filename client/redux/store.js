@@ -7,9 +7,9 @@ import settingsReducer from "./reducer/settingsSlice";
 
 const makeStore = () => configureStore({
   reducer: {
-    room: roomReducer,
+    rooms: roomReducer,
     searchroom: searchRoomReducer,
-    setting: settingsReducer
+    settings: settingsReducer
   },
   devtools: true
 })

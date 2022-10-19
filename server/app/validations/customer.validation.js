@@ -13,7 +13,7 @@ const createCustomer = {
    body: Joi.object().keys({
     name: Joi.string().min(4).max(160).required(),
     email: Joi.string().email().required(),
-    birthday: Joi.date().required().format('YYYY-MM-DD').utc(),
+    birthday: Joi.date().optional().format('YYYY-MM-DD').utc(),
     mobile: Joi.string().optional().default(''),
     address: Joi.string().optional().default(''),
     avatar: Joi.string().optional().default(''),
@@ -25,9 +25,9 @@ const createCustomer = {
 
 const updateCustomer = {
   body: Joi.object().keys({
-    name: Joi.string().min(4).max(160).required(),
-    email: Joi.string().email().required(),
-    birthday: Joi.date().required().format('YYYY-MM-DD').utc(),
+    name: Joi.string().min(4).max(160).optional(),
+    email: Joi.string().email().optional(),
+    birthday: Joi.date().optional().format('YYYY-MM-DD').utc(),
     mobile: Joi.string().optional().default(''),
     address: Joi.string().optional().default(''),
     avatar: Joi.string().optional().default(''),

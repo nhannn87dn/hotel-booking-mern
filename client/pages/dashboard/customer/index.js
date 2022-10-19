@@ -103,3 +103,14 @@ function CustomerList() {
 }
 
 export default CustomerList;
+
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+      userTypes: "admin",
+      allowRoles: ["admin"]
+    }
+  };
+}

@@ -46,18 +46,18 @@ export const getAllRooms = createAsyncThunk("room/getAllRooms", async () => {
 });
 
 const roomsSlice = createSlice({
-  name: "room",
+  name: "rooms",
   initialState,
   reducers: {
    
   },
   extraReducers: {
-    [HYDRATE]: (state, action) => {
+    [HYDRATE]: (state, { payload }) => {
       return {
-        ...state,
-        ...action.payload.rooms,
+          ...state,
+          ...payload.rooms,
       };
-    },
+  },
     [getAllRooms.pending]: (state) => {
       state.loading = true;
       state.message = "pending";
@@ -99,6 +99,6 @@ const roomsSlice = createSlice({
 
 
 //Selector List
-export const roomsSelector = (state) => state.room;
+export const roomsSelector = (state) => state.rooms;
 
 export default roomsSlice.reducer;

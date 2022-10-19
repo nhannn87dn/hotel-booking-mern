@@ -99,12 +99,12 @@ import styles from './RoomItem.module.css';
             <span className={styles.room_price_unit}>$</span>
             <span className={styles.room_price}>{room.pricePerNight}</span>/ per night
           </p>
-          <Link href={`/rooms/${room._id}`}>
+          <Link href={`/rooms/${room.slug}`}>
             <a className={styles.book_button + ' button'}>
               BOOK
             </a>
           </Link>
-          <Link href={`/rooms/${room._id}`}>
+          <Link href={`/rooms/${room.slug}`}>
             <a className={styles.viewDetail_button + ' button'}>
               VIEW DETAILS
             </a>

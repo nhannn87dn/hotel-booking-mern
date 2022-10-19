@@ -46,10 +46,15 @@ export async function getStaticProps({ params = {} } = {}) {
   return {
     props: {
       id: params.id,
-      title: `Message ${params.id}`
-    }
+      title: `Message ${params.id}`,
+      protected: true,
+      userTypes: "admin",
+    },
+    
   }
 }
+
+
 
 export async function getStaticPaths() {
   const paths = [...new Array(5)].map((i, index) => {

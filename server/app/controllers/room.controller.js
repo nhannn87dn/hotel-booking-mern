@@ -5,6 +5,15 @@ const {
   requestHandler,
 } = require("../utils");
 
+const getRoomBySlug = catchAsync(async (req, res) => {
+  const { slug } = req.params;
+  const room = await roomService.getRoomBySlug(slug);
+  if (!room) throw new AppError("Room not found", 400);
+
+  requestHandler.sendSuccess(res, "successful")(room);
+});
+
+
 const getRoom = catchAsync(async (req, res) => {
   const { id } = req.params;
   const room = await roomService.getRoom(id);
@@ -60,6 +69,7 @@ const uploadImages = catchAsync(async (req, res) => {
   
 module.exports = {
   getRoom,
+  getRoomBySlug,
   getRooms,
   createRoom,
   updateRoom,

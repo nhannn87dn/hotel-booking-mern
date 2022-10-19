@@ -26,7 +26,7 @@ content-type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
 
 {
-   "numOfAdults": 2
+   
 }
 
 
@@ -59,9 +59,9 @@ POST http://localhost:3001/api/v1/rooms/search?sortBy=pricePerNight&sortType=ASC
 content-type: application/json
 
 {
- "checkInDate": "2022-10-17",
+ "checkInDate": "2022-10-15",
  "checkOutDate": "2022-10-19",
  "guestCapacity": 2,
  "numOfRooms": 1,
- "roomId": "633efe975ba09351eed6cd81"
+ "roomId": "633eddb9d3fd295dbe5de078"
 }

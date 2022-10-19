@@ -78,10 +78,11 @@
 .main_navigation a {
     padding: .625rem 1.25rem;
     font-weight: 400;
-    display: block;
+    display: inline-flex;
     text-decoration: none;
     color: var(--c-link);
     position: relative;
+    align-items: center;
 }
 
 

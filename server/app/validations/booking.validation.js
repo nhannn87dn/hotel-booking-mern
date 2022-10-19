@@ -36,8 +36,8 @@ const getBookings = {
 const createBooking = {
    body: Joi.object().keys({
       room: Joi.string().required().custom(objectId),
-      numOfRooms: Joi.number().required().default(1), 
       customer: Joi.string().required().custom(objectId),
+      numOfRooms: Joi.number().required().default(1), 
       checkInDate: Joi.string().required().custom(dateFormat),
       checkOutDate: Joi.string().required().custom(dateFormat),
       pricePerNight: Joi.number().required().default(0),
@@ -47,16 +47,18 @@ const createBooking = {
       serviceCharge: Joi.number().optional().default(0),
       surCharge: Joi.number().optional().default(0),
       taxFee: Joi.number().optional().default(0),
-      discount: Joi.number().min(0).max(Joi.ref('pricePerNight')).optional().default(0),
+      discount: Joi.number().min(0).max(Joi.ref('pricePerNight')).required().default(0),
       totalAmount: Joi.number().optional().default(0),
       daysOfStay: Joi.number().optional().default(1),
-      paymentInfo: Joi.object().required().default({}),
+      paymentId: Joi.string().required().custom(objectId),
       status: Joi.string().valid("booked","confirmed", "canceled", "checkedin", "checkedout","success").default('booked'),
       paymentStatus: Joi.string().valid("unpay", "pending", "paid").default('unpay'),
-      note: Joi.string().optional().default(''),
+      note: Joi.string().optional().valid("").default(""),
    }),
 
 };
+
+
 
 const updateBooking = {
   body: Joi.object().keys({

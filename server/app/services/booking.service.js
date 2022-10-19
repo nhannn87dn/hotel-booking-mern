@@ -140,7 +140,13 @@ const createBooking = async (body) => {
   body.checkInDate = await Booking.makeBookingDate(body.checkInDate);
   body.checkOutDate = await Booking.makeBookingDate(body.checkOutDate,true);
   body.code =  randomString.makeRandomString(8);
-  
+
+  /* tạo phương thức thanh toán dựa trên ID */
+  body.paymentInfo = {
+    payment: body.paymentId
+  }
+  delete body.paymentId;
+ 
   const booking = await Booking.create(body);
   return booking;
 };

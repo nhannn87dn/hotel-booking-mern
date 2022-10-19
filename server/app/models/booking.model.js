@@ -137,7 +137,8 @@ const bookingSchema = new mongoose.Schema({
             default: 'unpay'
         },
         note: {
-            type: String
+            type: String,
+            default: ''
         },
         isDelete: {
             type: Boolean,
@@ -178,8 +179,10 @@ bookingSchema.pre("save", async function (next) {
     this.checkInDate = moment.utc(this.checkInDate).format("YYYY-MM-DD hh:mm:ssZ");
     this.checkOutDate = moment.utc(this.checkOutDate).format("YYYY-MM-DD hh:mm:ssZ");
     
+    
+
     //TODO calculate totalAmount, taxFee auto
-    let subAmount = (this.pricePerNight + this.priceChildren) * this.daysOfStay + this.serviceCharge + this.surCharge - this.discount;
+    let subAmount = (this.pricePerNight  * this.daysOfStay) + (this.serviceCharge + this.surCharge) - this.discount;
     let taxFee = subAmount * 0.08; //8%
     let totalAmount = subAmount + taxFee;
 

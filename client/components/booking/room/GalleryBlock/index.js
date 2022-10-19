@@ -26,7 +26,7 @@ export default function GalleryBlock({ gallery }) {
         className="GallerySwiper"
       >
         {gallery.map((photo, index) => (
-          <SwiperSlide key={photo.id} style={{background: "#fafafa"}}>
+          <SwiperSlide key={photo._id} style={{background: "#fafafa"}}>
             <Image
               layout="responsive"
               src={photo.link}

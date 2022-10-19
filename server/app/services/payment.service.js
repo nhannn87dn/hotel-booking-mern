@@ -30,17 +30,24 @@ const getPayments = async (query) => {
     .limit(pageSize);
 
   const filteredCount = payments.length;
-
-  return [
+  const totalPages = Math.ceil(count / pageSize);
+  return 
     {
       pageSize,
       pageNumber,
       count,
-      totalPages: Math.ceil(count / pageSize),
+      totalPages,
       filteredCount,
       payments
     }
-  ];
+  ;
+}
+
+const getPaymentList = async () => {
+  const payments = await Payment.find()
+    .select("_id code name desc")
+    .sort({ name: -1 })
+  return payments;
 }
 
 const createPayment = async (body) => {
@@ -73,6 +80,7 @@ const deletePayment = async (id) => {
 module.exports = {
   getPaymentsList,
   getPayments,
+  getPaymentList,
   getPayment,
   createPayment,
   updatePayment,

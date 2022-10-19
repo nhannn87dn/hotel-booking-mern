@@ -1,6 +1,16 @@
 const {Customer} = require('../models');
 const AppError = require('../utils/AppError');
-//const _ = require('lodash');
+const _ = require('lodash');
+
+const meProfile = async (customer) => {
+  const me = await Customer.findById(customer._id);
+  if(!me){
+    throw new AppError('Customer not Found', 400);
+    }
+  var result = _.pick(me, ["_id", "name", "email", "birthday", "mobile", "address", "avatar", "country", "zipCode"]);
+  return result;
+};
+
 
 const meLogin = async (meBody) => {
 
@@ -8,7 +18,7 @@ const meLogin = async (meBody) => {
         email: meBody.email
     });
     if(!customer){
-        throw new AppError('Invalid email', 400);
+        throw new AppError(meBody.email + 'Invalid email', 400);
     } 
 
     const code = customer.generateCode(6);
@@ -22,24 +32,37 @@ const meLogin = async (meBody) => {
 const meVerify = async (meBody) => {
     let customer = await Customer.findOne({
         email: meBody.email,
-        otp: meBody.code
+        otp: meBody.otp
     });
     if(!customer){
         throw new AppError('Code is Expired', 400);
     }
     const token = customer.generateAuthToken();
-
+    //TODO insert token to access_token Collection -> check valid token expr
     /* Only select fields necessary */
-    var result = _.pick(customer, ['_id', 'name', 'email']);
-    return [{user: result, token}];
+    //var result = _.pick(customer, ['_id', 'name', 'email', 'avatar']);
+    return {token: token}
 }
 
-const meLogout = async (meBody) => {
-
+const meVerifyToken = async (reqMe) => {
+    const me = await meProfile(reqMe);
+    var result = _.pick(me, ['_id', 'name', 'email', 'avatar']);
+    return {...result,isLoggedIn: true}
 }
+
+
+const meSignUp = async (body) => {
+    const me = await Customer.create(body);
+    let result = _.pick(me, ['_id', 'name', 'email', 'avatar']);
+    return result
+};
+  
+
 
 module.exports = {
     meLogin,
     meVerify,
-    meLogout,
+    meVerifyToken,
+    meProfile,
+    meSignUp
 };

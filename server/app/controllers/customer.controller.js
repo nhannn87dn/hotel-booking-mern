@@ -14,7 +14,7 @@ const getCustomer = catchAsync(async (req, res)=> {
 const getCustomers = catchAsync(async (req, res)=> {
     let pageNumber = req.query.page ? parseInt(req.query.page) : 1;
     const customers = await customerService.getCustomers(pageNumber);
-    requestHandler.sendSuccess(res,'successful')({customers});
+    requestHandler.sendSuccess(res,'successful')(customers);
 });
 
 const createCustomer = catchAsync(async (req, res)=> {

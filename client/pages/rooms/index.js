@@ -11,13 +11,21 @@ import {
   filterRooms,
   getAllRooms,
 } from "../../redux/reducer/roomSlice";
+import {settingSelector, getSettings} from "../../redux/reducer/settingsSlice";
 import { wrapper } from "../../redux/store";
 
 import { localStorageHelper } from "../../utils/localStorageHelper";
 
+export const getStaticProps = wrapper.getStaticProps(store => async() => {
+  console.log('2. Page.getStaticProps uses the store to dispatch things');
+  await store.dispatch(getSettings());
+  await store.dispatch(getAllRooms());
+});
+
+
 export default function Rooms() {
   const { loading, success, error, rooms } = useSelector(roomsSelector);
-  
+  const {settings: {data}} = useSelector(settingSelector);
   const [clicked, setClicked] = React.useState(false);
   const dispatch = useDispatch();
   
@@ -47,15 +55,15 @@ export default function Rooms() {
   }
 
   return (
-    <Layout pageId="_rooms">
+    <Layout pageId="_rooms" settings={data}> 
       <Head>
-        <title>Rooms List | Hotel Booking</title>
+        <title>Rooms & Suites | Sochi Hotel </title>
 
         <link rel="canonical" href="/rooms" />
 
-        <meta property="og:title" content="Rooms List | Hotel Booking" />
-        <meta property="og:description" content="Rooms List | Hotel Booking" />
-        <meta property="og:site_name" content="Rooms List | Hotel Booking" />
+        <meta property="og:title" content="Rooms & Suites | Sochi Hotel" />
+        <meta property="og:description" content={`Rooms & Suites ${data.metaDescription}`} />
+        <meta property="og:site_name" content={data.name} />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="vi_VN" />
         <meta property="og:url" itemprop="url" content="/rooms" />
@@ -112,10 +120,3 @@ export default function Rooms() {
     </Layout>
   );
 }
-
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async () => {
-    await store.dispatch(getAllRooms());
-    console.log('call getAllRooms')
-  }
-);

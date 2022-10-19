@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const moment = require('moment');
+const slugify = require('slugify');
 
 const { Schema } = mongoose;
 const roomSchema = new Schema(
@@ -14,7 +15,8 @@ const roomSchema = new Schema(
     slug: {
         type: String,
         lowercase: true,
-        required: true,
+        unique: true,
+        maxLength: [255, 'slug cannot exceed 255 characters']
     },
     isHot: {
         type: Boolean,
@@ -262,6 +264,9 @@ const roomSchema = new Schema(
 
 /* convert GMT +0 */
 roomSchema.pre("save", async function (next) {
+    if(this.slug == ""){
+        this.slug = slugify(this.name);
+    }
     this.createdAt = moment.utc(this.createdAt).format("YYYY-MM-DD hh:mm:ssZ");
     this.updatedAt = moment.utc(this.updatedAt).format("YYYY-MM-DD hh:mm:ssZ");
     next();

@@ -26,6 +26,7 @@ const customerSchema = new Schema(
         unique: true,
         lowercase: true,
         trim: true,
+        maxlength: 255,
         validate(value) {
           if (!validator.isEmail(value)) {
             throw new Error("Email is invalid");
@@ -34,7 +35,6 @@ const customerSchema = new Schema(
     },
     birthday :{
       type: Date,
-      required: true,
     },            
     mobile: {
         type: String,
@@ -74,20 +74,23 @@ const customerSchema = new Schema(
       enum: [true, false],
       default: false,
     },
+    isVerifyEmail: {
+      type: Date
+    },
 },
 { timestamps: true }
 );
 
 
-customerSchema.statics.isEmailTaken = async (email, excludeUserId) => {
-  const customer = await this.findOne({
-    email,
-    _id: {
-      $ne: excludeUserId,
-    },
-  });
-  return !!customer;
-};
+// customerSchema.statics.isEmailTaken = async (email, excludeUserId) => {
+//   const customer = await this.findOne({
+//     email,
+//     _id: {
+//       $ne: excludeUserId,
+//     },
+//   });
+//   return !!customer;
+// };
 
 // Random Code 
 customerSchema.methods.generateCode = function (lengths = 6) {

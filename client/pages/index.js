@@ -11,9 +11,10 @@ import {
   GallerySection
 } from "../components/booking/home";
 import SearchRooms from "../components/booking/SearchRooms";
-import { useSelector, useDispatch } from "react-redux";
-import {settingSelector, getSettings, updateMessage} from "../redux/reducer/settingsSlice";
+import { useSelector } from "react-redux";
+import {settingSelector, getSettings} from "../redux/reducer/settingsSlice";
 import { wrapper } from "../redux/store";
+import {useAuth} from "../components/Auth";
 
 export const getStaticProps = wrapper.getStaticProps(store => async() => {
   console.log('2. Page.getStaticProps uses the store to dispatch things');
@@ -22,22 +23,8 @@ export const getStaticProps = wrapper.getStaticProps(store => async() => {
 
 
 function Index () {
-  const dispatch = useDispatch();
-  let { settings } = useSelector(settingSelector);
-
-  console.log("Index page",settings)
-
-  settings = settings?.data;
-
-  
-  
-  // /* first time, get all room */
-  useEffect(() => {
-    //dispatch(getSettings());
-
-    dispatch(updateMessage('test'));
-
-  }, []);
+  const {settings: {data}} = useSelector(settingSelector);
+  const {auth} = useAuth()
 
   const rooms = [
     {
@@ -107,14 +94,14 @@ function Index () {
 
   return (
    
-    <Layout pageId="_home">
+    <Layout pageId="_home" settings={data} me={auth}>
      
       <Head>
-        <title>Sochi Hotel | Hotel Booking</title>
+        <title>{data.metaTitle} | Hotel Booking</title>
         <link rel="canonical" href="/" />
-        <meta property="og:title" content="Sochi Hotel" />
-        <meta property="og:description" content="Sochi Hotel" />
-        <meta property="og:site_name" content="Sochi Hotel" />
+        <meta property="og:title" content="{data.metaTitle}" />
+        <meta property="og:description" content="{data.metaDescription}" />
+        <meta property="og:site_name" content="{data.name}" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="vi_VN" />
         <meta property="og:url" itemprop="url" content="/" />

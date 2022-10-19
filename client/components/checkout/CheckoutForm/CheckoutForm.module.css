@@ -1,0 +1,37 @@
+
+  .layout_wrapper{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 5em;
+    max-width: 860px;
+    margin: 0 auto
+  }
+
+  .main_content{
+    flex: 1;
+  }
+
+  .sidebar_content{
+    flex-basis: 320px;
+  }
+
+
+/* form */
+.title_section {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    clear: both;
+}
+
+.actions {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.note {
+    font-size: 12px;
+    margin: 20px auto;
+    color: #666;
+}

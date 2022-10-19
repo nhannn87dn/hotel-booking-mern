@@ -1,19 +1,32 @@
-import React from 'react';
+import {useEffect } from "react";
 import Head from 'next/head';
 import {Layout} from '../../components/dashboard/layout';
 import styles from  '../../styles/dashboard/Dashboard.module.css';
 import { IoCartOutline, IoArrowDownCircle, IoArrowUpCircle } from "react-icons/io5";
+import {useAuth} from "../../components/Auth";
+import { useRouter } from 'next/router';
 
+function DashboardIndex() {
+  const {auth} = useAuth()
+  const router = useRouter()
 
-function Index() {
+  console.log("Dashboard",auth)
+
+  useEffect(() => {
+      if(auth && !auth.isLoggedIn ){
+        router.push("/dashboard/login")
+      }
+  },[auth])
+
   return (
-    <Layout pageId='dashboard'>
+    <Layout pageId='dashboard' user={auth}>
       <Head>
           <title>Dashboard | Hotel Booking</title>
           <meta content="noindex,noffolow" name="robots"/>
           <link rel="canonical" href="/dashboard" />
           
         </Head>
+        {auth.name}
         <div className={styles.overview_boxes}>
         
         <div className={styles.box}>
@@ -69,7 +82,7 @@ function Index() {
       <div className='flex_columns'>
           <div className='flex_column'>
           
-            <form action="" style={{'max-width': '50%'}}>
+            <form action="" style={{maxWidth: '50%'}}>
                 <div className="input_form">
                     <label htmlFor="username">Username</label>
                     <input type="text" name='username' />
@@ -189,4 +202,13 @@ function Index() {
   )
 }
 
-export default Index
+export default DashboardIndex
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+      userTypes: "admin"
+    }
+  };
+}

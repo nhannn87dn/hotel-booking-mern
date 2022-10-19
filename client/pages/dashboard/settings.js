@@ -114,3 +114,13 @@ function Settings() {
 }
 
 export default Settings;
+
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+      userTypes: "admin"
+    }
+  };
+}

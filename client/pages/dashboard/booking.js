@@ -103,3 +103,13 @@ function Booking() {
 }
 
 export default Booking
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+      userTypes: "admin",
+      allowRoles: ["admin", "booking"]
+    }
+  };
+}

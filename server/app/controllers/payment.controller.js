@@ -9,36 +9,43 @@ const getPayment = catchAsync(async (req, res) => {
   const { id } = req.params;
   const payment = await paymentService.getPayment(id);
   if (!payment) throw new AppError("Payment not found", 400);
-  requestHandler.sendSuccess(res, "successful")({ payment });
+  requestHandler.sendSuccess(res, "successful")(payment);
 });
 
 const getPayments = catchAsync(async (req, res) => {
   const payments = await paymentService.getPayments(req.query);
-  requestHandler.sendSuccess(res, "successful")({ payments });
+  requestHandler.sendSuccess(res, "successful")(payments);
 });
+
+const getPaymentList = catchAsync(async (req, res) => {
+  const payments = await paymentService.getPaymentList();
+  requestHandler.sendSuccess(res, "successful")(payments);
+});
+
 
 const createPayment = catchAsync(async (req, res) => {
   const payment = await paymentService.createPayment(req.body);
-  requestHandler.sendSuccess(res, "successful")({ payment });
+  requestHandler.sendSuccess(res, "successful")(payment);
 });
 
 
 const updatePayment = catchAsync(async (req, res) => {
     const id = req.params.id;
     const payment = await paymentService.updatePayment(id, req.body);
-    requestHandler.sendSuccess(res, "successful")({ payment });
+    requestHandler.sendSuccess(res, "successful")(payment);
 });
 
 const deletePayment = catchAsync(async (req, res) => {
   const id = req.params.id;
   const payment = await paymentService.deletePayment(id);
-  requestHandler.sendSuccess(res, "successful")({ payment });
+  requestHandler.sendSuccess(res, "successful")(payment);
 });
 
   
 module.exports = {
   getPayment,
   getPayments,
+  getPaymentList,
   createPayment,
   updatePayment,
   deletePayment,

@@ -31,6 +31,11 @@ const getCustomers = async (pageNumber) => {
 };
 
 const createCustomer = async (customerBody) => {
+  if (customerBody.email && (await Customer.findOne(
+    {email: customerBody.email}
+    ))) {
+      throw new AppError("Email is already taken", 400);
+  }
   const customer = await Customer.create(customerBody);
   return customer;
 };
@@ -41,11 +46,10 @@ const updateCustomer = async (id, customerBody) => {
     throw new AppError("Customer not Found", 400);
   }
 
-  if (
-    customerBody.email &&
-    (await Customer.isEmailTaken(customerBody.email, id))
-  ) {
-    throw new AppError("Email is already taken", 400);
+  if (customerBody.email && (await Customer.findOne(
+    {email: customerBody.email}
+    ))) {
+      throw new AppError("Email is already taken", 400);
   }
   Object.assign(customer, customerBody);
   let result = await customer.save();

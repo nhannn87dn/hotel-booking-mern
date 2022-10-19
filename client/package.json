@@ -11,6 +11,8 @@
     "@reduxjs/toolkit": "^1.8.6",
     "axios": "^1.1.2",
     "formik": "^2.2.9",
+    "ioredis": "^5.2.3",
+    "moment": "^2.29.4",
     "next": "^12.2.5",
     "next-redux-wrapper": "^8.0.0",
     "react": "^18.2.0",

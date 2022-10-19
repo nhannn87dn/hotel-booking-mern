@@ -1,6 +1,13 @@
 const Joi = require('joi');
 const {objectId, dateFormat} = require('./custom.validation');
 
+const getRoomBySlug = {
+  params: Joi.object().keys({
+    slug: Joi.string().required(),
+  }),
+};
+
+
 const getRoom = {
   params: Joi.object().keys({
     id: Joi.string().required().custom(objectId),
@@ -156,6 +163,7 @@ const deleteRoom = {
 
 module.exports = {
   getRoom,
+  getRoomBySlug,
   getRooms,
   createRoom,
   updateRoom,

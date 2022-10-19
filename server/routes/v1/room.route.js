@@ -35,6 +35,13 @@ router.post(
   roomController.searchAvailableRooms
 );
 
+// @GET:  /api/v1/rooms/:slug
+router.get(
+  "/:slug",
+  validate(roomValidation.getRoomBySlug),
+  roomController.getRoomBySlug
+);
+
 // @GET:  /api/v1/rooms/:id/details
 router.get(
   "/:id/details",

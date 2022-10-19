@@ -5,17 +5,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0Z
 content-type: application/json
 
 {
-    "room": "633fece9fc0ee7ca4b967ca2",
+    "paymentId": "633fd2e3aafc8698e8cce4ee",
+    "roomId": "633eddb9d3fd295dbe5de078",
     "customer": "6337ff4f5ac593f1822939dd",
-    "checkInDate": "2022-10-12",
-    "checkOutDate": "2022-10-16",
-    "pricePerNight": 159,
-    "priceChildren": 75,
+    "note": "yeu cau",
+    "numOfRooms": 1,
     "numOfAdults": 2,
-    "numOfRooms":1,
-    "paymentInfo": {
-        "payment": "633fd2e3aafc8698e8cce4ee"
-    }
+    "numOfChildren": 0,
+    "discount": 0,
+    "checkInDate": "2022-10-20",
+    "checkOutDate": "2022-10-24",
+    "pricePerNight": 29
 }
 
 ### Create
@@ -57,7 +57,7 @@ GET http://localhost:3001/api/v1/bookings/6337ff4f5ac593f1822939dd/list HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
 
 ### Get a Booking details by CustomerID
-GET http://localhost:3001/api/v1/bookings/6337ff4f5ac593f1822939dd/details/63416e7cacda4044387a5c64 HTTP/1.1
+GET http://localhost:3001/api/v1/bookings/details/634e4d91c1eafe8a6deb9167 HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzM3ZmY0ZjVhYzU5M2YxODIyOTM5ZGQiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwibW9iaWxlIjoiKzg0OTg4MDcxNDQzIiwiaWF0IjoxNjY0NjE1MjQwfQ.1SH2rCsHQTStRKnqLsCctRjcn6fFqykOv3n6lnB-d6s
 
 ### GET Bookings Admin

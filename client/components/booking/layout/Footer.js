@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoLocationOutline, IoChatboxEllipsesOutline, IoMailOpenOutline, IoCallOutline } from "react-icons/io5";
 
-function Footer() {
+
+function Footer({data}) {
 
   return (
     <footer className={styles.site_footer + " clearfix"}>
@@ -71,9 +72,9 @@ function Footer() {
               <div className={styles.widget_area}>
                 <h4 className={styles.widget_title}>Contact Us</h4>
                 <div className={styles.textwidget}>
-                  <p><IoLocationOutline /> address</p>
-                  <p><IoMailOpenOutline /> email</p>
-                  <p><IoCallOutline /> hotline</p>
+                  <p><IoLocationOutline /> {data.address}</p>
+                  <p><IoMailOpenOutline /> {data.email}</p>
+                  <p><IoCallOutline /> {data.hotline}</p>
                   <p><IoChatboxEllipsesOutline /> 24/7 Customer Service</p>
                 </div>
               </div>
@@ -82,7 +83,7 @@ function Footer() {
         </div>
         <div className={styles.site_info_wrapper}>
           <div className={styles.wrapper + " clearfix"}>
-            <div className={styles.site_info}>Sochi Hotel © 2022 All Rights Reserved</div>
+            <div className={styles.site_info}>{data.appName} © 2022 All Rights Reserved</div>
           </div>
         </div>
     </footer>

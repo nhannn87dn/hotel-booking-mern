@@ -99,6 +99,12 @@ const searchAvailableRooms = async (body, query) => {
   };
 };
 
+const getRoomBySlug = async (slug) => {
+  return await Room.findOne({
+    slug: slug
+  });
+};
+
 const getRoom = async (id) => {
   return await Room.findById(id);
 };
@@ -234,6 +240,7 @@ module.exports = {
   searchAvailableRooms,
   getRooms,
   getRoom,
+  getRoomBySlug,
   createRoom,
   updateRoom,
   deleteRoom,

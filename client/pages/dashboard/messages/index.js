@@ -105,3 +105,14 @@ function MessageList() {
 }
 
 export default MessageList;
+
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+      userTypes: "admin",
+      allowRoles: ["admin", "booking"]
+    }
+  };
+}

@@ -7,11 +7,11 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 
 const LoginSchema = Yup.object().shape({
-  otp: Yup.string().min(8).required("OTP is Required"),
+  otp: Yup.string().min(6).required("OTP is Required"),
 });
 
 
-function VerifyForm() {
+function VerifyForm({handleVerifyOTP,email}) {
   return (
     <div className={styles.me_formbox}>
             <div className={styles.me_form_wrapper}>
@@ -19,7 +19,7 @@ function VerifyForm() {
             <Image  width={120} height={30} src='/images/logo-gold.png' alt="Logo" />
             </div>
             <h2 className={styles.title_form}>Verify</h2>
-            <p>Please enter the <strong>OTP</strong> that was sent to your otp youremxxx@gmail.com</p>
+            <p>Please enter the <strong>OTP</strong> that was sent to your otp {email}</p>
             <Formik
             initialValues={{
                 otp: "",
@@ -27,14 +27,19 @@ function VerifyForm() {
             validationSchema={LoginSchema}
             onSubmit={(values) => {
                 // same shape as initial values
-                console.log(values);
+                const OTP = values.otp;
+                handleVerifyOTP({
+                  otp: OTP,
+                  email: email
+                });
             }}
             >
-            {({ errors, touched }) => (
+            {({ errors, touched, isSubmitting, isValid }) => (
             <Form>
                 <Field className={styles.input_form} placeholder='Enter your otp' name="otp" type="text" />
                 {errors.otp && touched.otp ? <div className="error_box">{errors.otp}</div> : null}
-                <button type="submit">Verify</button>
+                {!isSubmitting && <button type="submit">Verify</button>}
+                {isSubmitting && isValid && <button type="button" disabled>Processing...</button>}
             </Form>
             )}
             </Formik>

@@ -45,6 +45,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlO
 GET http://localhost:3001/api/v1/payments HTTP/1.1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
 
+###
+GET http://localhost:3001/api/v1/payments/list HTTP/1.1
+
 
 ###
 GET http://localhost:3001/api/v1/payments/633fd2e3aafc8698e8cce4ee HTTP/1.1

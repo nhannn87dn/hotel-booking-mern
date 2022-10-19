@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { HYDRATE } from "next-redux-wrapper";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 /*
   AsyncThunk Actions
@@ -11,7 +12,7 @@ export const getSettings = createAsyncThunk('setting/getSettings',  async () => 
     const response = await axios.get(
       process.env.apiEndPoint + "/v1/settings/list"
     );
-    console.log("getSettings",response.data);
+    //console.log("getSettings",response.data);
     return response.data;
   } catch (error) {
     console.log("getSettings Error",error.response.data);
@@ -21,7 +22,7 @@ export const getSettings = createAsyncThunk('setting/getSettings',  async () => 
 
 /** Slice */
 const settingsSlice = createSlice({
-  name: 'setting',
+  name: 'settings',
   initialState: {
     loading: false,
     success: false,
@@ -35,13 +36,17 @@ const settingsSlice = createSlice({
     },
   },
   extraReducers: {
-   
+    [HYDRATE]: (state, { payload }) => {
+      return {
+          ...state,
+          ...payload.settings,
+      };
+  },
     [getSettings.pending]: (state) => {
       state.loading = true;
       state.message = "pending";
     },
     [getSettings.fulfilled]: (state, action) => {
-      console.log('xxxx',action);
       state.loading = false;
       state.success = true;
       state.settings = action.payload;
@@ -51,7 +56,7 @@ const settingsSlice = createSlice({
     [getSettings.rejected]: (state, action) => {
       state.loading = false;
       state.success = false;
-      state.settings = [];
+      state.settings = {};
       state.error = true;
       state.message = action.payload.message;
     },
@@ -60,6 +65,6 @@ const settingsSlice = createSlice({
 
 export const { updateMessage  } = settingsSlice.actions;
 //selector
-export const settingSelector = (state) => state.setting;
+export const settingSelector = (state) => state.settings;
 
 export default settingsSlice.reducer

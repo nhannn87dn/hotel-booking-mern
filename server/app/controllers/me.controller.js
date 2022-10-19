@@ -35,29 +35,33 @@ const meLogin = catchAsync(async (req, res)=> {
 const meVerify = catchAsync(async (req, res)=> {
     const result = await meService.meVerify(req.body);
     if(!result) throw new AppError('Login failed',400);
-    requestHandler.sendSuccess(res, 'successful')({result});
+    requestHandler.sendSuccess(res, 'successful')(result);
    
 });
 
 const meVerifyToken = catchAsync(async (req, res)=> {
-    requestHandler.sendSuccess(res, 'successful');
+    const me = await meService.meVerifyToken(req.me);
+    if(!me) throw new AppError('Verify failed',400);
+    requestHandler.sendSuccess(res, 'successful')(me);
 });
 
-const meFreshToken = catchAsync(async (req, res)=> {
-    requestHandler.sendSuccess(res, 'successful');
+const meProfile = catchAsync(async (req, res)=> {
+    const me = await meService.meProfile(req.me);
+    if(!me) throw new AppError('get Profile failed',400);
+    requestHandler.sendSuccess(res, 'successful')(me);
 });
 
-
-
-const meLogout = catchAsync(async (req, res)=> {
-
+const meSignUp = catchAsync(async (req, res)=> {
+    const me = await meService.meSignUp(req.body);
+    requestHandler.sendSuccess(res, 'successful')(me);
 });
+
 
 module.exports = {
     meLogin,
     meVerify,
     meVerifyToken,
-    meFreshToken,
-    meLogout
+    meProfile,
+    meSignUp
 
 }

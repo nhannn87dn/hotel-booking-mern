@@ -10,7 +10,7 @@ const { authorize, role } = require("../../app/utils");
  */
 
 // @GET:  /api/v1/payments/list
-router.get("/list", paymentController.getPayments);
+router.get("/list", paymentController.getPaymentList);
 
 // @GET:  /api/v1/payments/:id/details
 router.get(

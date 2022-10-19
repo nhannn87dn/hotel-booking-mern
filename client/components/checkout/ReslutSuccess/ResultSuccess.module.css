@@ -1,0 +1,9 @@
+.layout_wrapper{
+    display: block;
+    max-width: 600px;
+    margin: 0 auto
+  }
+  #actions {
+    justify-content: center;
+    margin-top: 2em;
+  }
