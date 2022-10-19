@@ -1,0 +1,74 @@
+.section_rooms{
+    position: relative;
+    box-sizing: border-box;
+    padding: 2em 50px;
+    background-color: #FCFCFD;
+}
+.section_header{
+    display: flex;
+    margin-bottom: 2em;
+}
+.section_header_title{
+    flex-basis: 50%;
+    position: relative;
+}
+.section_header_action{
+    flex-basis: 50%;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end
+}
+
+
+.section_heading{
+    margin-top: 10px;
+    font-size: 1.9375rem;
+    font-family: "Noto Serif",serif;
+    font-weight: 400;
+    color: #222;
+}
+.section_heading__content {
+    position: relative;
+    padding-top: 1.25rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    font-size: 12px;
+    color: #222;
+}
+.section_heading__content:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 4px;
+    background-color: #c1b086;
+}
+
+.section_header_action .custom_button:hover{
+    cursor: pointer;
+    text-decoration: none;
+    border-color: #252e59;
+    background: #252e59;
+    color: #fff;
+}
+.rooms_list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 3em;
+}
+
+@media (max-width: 480px){
+    .section_rooms {
+        padding: 2em 1em
+    }
+    .section_header {
+        flex-direction: column;
+    }
+    .section_header_title, .section_header_action {
+        flex-basis: 100%;
+    }
+    
+}

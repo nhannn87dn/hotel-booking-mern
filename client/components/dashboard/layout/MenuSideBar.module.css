@@ -1,0 +1,47 @@
+
+  .nav_links{
+    margin-top: 10px;
+  }
+  .nav_links li{
+    position: relative;
+    list-style: none;
+    height: 50px;
+  }
+  .nav_links a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  }
+  .nav_links a.active{
+    background: #262f3e;
+  }
+  .nav_links  a:hover{
+    background: #262f3e;
+  }
+  .nav_links .links_icon{
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #9aa5b1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .nav_links  .links_name{
+    color: #9aa5b1;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .nav_links   a:hover .links_name {
+    color: #c1b086
+  }
+  .nav_links .log_out{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }

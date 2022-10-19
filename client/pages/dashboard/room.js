@@ -8,3 +8,13 @@ function Room() {
 }
 
 export default Room
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      protected: true,
+      userTypes: "admin",
+      allowRoles: ["admin", "booking"]
+    }
+  };
+}

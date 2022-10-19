@@ -1,59 +1,108 @@
-import Head from 'next/head'
-import Image from "next/image";
-import Link from "next/link";
-import Layout from '../../components/me/layout/Layout';
-import styles from '../../styles/Me.module.css';
-import { IoHomeOutline } from "react-icons/io5";
+import React, { useState, useEffect } from "react";
+import Head from "next/head";
+import { Fragment } from "react";
+import { LoginForm, VerifyForm, SideBox } from "../../components/me";
+import styles from "../../styles/Me.module.css";
+import axios from "axios";
+import { localStorageHelper } from "../../utils/localStorageHelper";
+import { useRouter } from 'next/router';
+import {useAuth} from "../../components/Auth";
 /**
  * Show form điền email đã Booking
  * Hệ thống sẽ xác nhận và send một OTP vào email
  * Nhập OTP để đi vào trang cá  nhân me
- * 
+ *
  */
-function Login() {
+function MeLogin() {
+  const {auth} = useAuth()
 
-  const bg_style = {
-      background: 'linear-gradient(0deg,#222,rgb(0,0,0,.5)), url(/images/g1.jpg)'
+  const router = useRouter();
+    useEffect(() => {
+      if(auth && !auth.isLoggedIn ){
+        router.push("/me/login")
+      }
+  },[auth])
+
+  const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  
+
+  const handleLogin = async (email) => {
+    setEmail((prev) => (prev = email));
+    //gọi xác nhận
+    try {
+      const data = await axios.post(
+        process.env.apiEndPoint + "/v1/me/login",
+        {
+          email: email
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then(response => response.data);
+      
+      if(data && data.status === 200){
+        setSuccess(prev=>prev = true)
+      }
+      
+    } catch (error) {
+      setError(error.response.data.message)
+      console.log("handleLogin",error.response.data);
+    }
   };
 
-  return (
-    <Layout>
+  const handleVerifyOTP = async (verify)=> {
+    console.log(verify);
+    //gọi xác nhận
+    try {
+      const data = await axios.post(
+        process.env.apiEndPoint + "/v1/me/verify",
+        verify,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+         }
+      ).then(response => response.data);
+      
+      if(data && data.status === 200){
+        localStorageHelper.set("meToken",data.data);
+        router.push('/me')
+      }
+      
+    } catch (error) {
+      console.log("handleVerifyOTP",error);
+    }
+   
+  }
 
+  return (
+    <Fragment>
       <Head>
-        <title>Me | Hotel Booking</title>
-        <meta content="noindex,noffolow" name="robots"/>
-        <link rel="canonical" href="/me" />
+        <title>Me Login | Hotel Booking</title>
+        <meta content="noindex,noffolow" name="robots" />
+        <link rel="canonical" href="/me/login" />
       </Head>
 
       <div className={styles.me_flex_wrapper}>
-          <div 
-          className={styles.me_sidebox}
-          style={bg_style}
-          >
-            <Image width={120} height={30} src='/images/logo.png' alt="Logo" />
-          </div>
-          <div className={styles.me_formbox}>
-              <div className={styles.me_form_wrapper}>
-                <div className={styles.form_logo}>
-                <Image  width={120} height={30} src='/images/logo-gold.png' alt="Logo" />
-                </div>
-                <h2 className={styles.title_form}>Login</h2>
-                <p>To Login, enter your email haven booking before, please !</p>
-                <form action="/me" method='POST'>
-                    <input className={styles.input_form} type="email" placeholder='Your Email' />
-                    <button type='submit'>Sign in</button>
-                </form>
-                <div className={styles.form_ext}>
-                  <Link href="/">
-                    <a><IoHomeOutline /> Back to Home</a>
-                  </Link>
-                </div>
-              </div>
-          </div>
+        <SideBox />
+        {!success && !email && <LoginForm error={error} handleLogin={handleLogin} />}
+        {email && success && <VerifyForm email={email} handleVerifyOTP={handleVerifyOTP} />}
       </div>
-
-    </Layout>
-  )
+    </Fragment>
+  );
 }
 
-export default Login
+export default MeLogin;
+
+
+export async function getStaticProps(context) {
+  return {
+    props: {
+      userTypes: "me"
+    }
+  };
+}

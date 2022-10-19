@@ -1,0 +1,98 @@
+
+
+  .room_wapper {
+    display: flex;
+    padding: 40px;
+    margin-top: 40px;
+    box-shadow: 0 13px 43px 0 rgb(37 46 89 / 10%);
+  }
+  .thumbnail {
+    flex-basis: 345px;
+    background-color: #fafafafa;
+  }
+  .room_detail {
+    flex: 1;
+    margin: 0 30px;
+  }
+  
+  .room_name {
+    font-family: 'Noto Serif', serif;
+    font-weight: 400;
+    color: #222;
+  }
+  
+  .room_name:hover {
+    color: #c1b086;
+  }
+  
+  .room_description {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .room_detail_item {
+    display: flex;
+    margin-top: 8px;
+  }
+  
+  .room_detail_icon {
+    margin-top: 6px;
+    margin-right: 16px;
+  }
+  
+  .room_detail_text {
+    color: #555;
+  }
+  
+  .room_orderAction {
+    padding-left: 30px;
+    width: 260px;
+    border-left: 1px solid #ededed;
+  }
+  
+  .room_price_wrapper {
+    margin: 20px 0;
+  }
+  
+  .room_price_unit {
+    vertical-align: top;
+    color: #222;
+  }
+  
+  .room_price {
+    font-weight: 400;
+    font-size: 30px;
+    color: #222;
+    line-height: 100%;
+    margin: 0 2px;
+  }
+  
+  .book_button {
+    width: 100%;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+  
+  .book_button:hover {
+    cursor: pointer;
+    text-decoration: none;
+    border-color: #252e59;
+    background: #252e59;
+    color: #fff;
+  }
+  
+  .viewDetail_button {
+    width: 100%;
+    background-color: #fff;
+    border-color: #ededed;
+    color: #222;
+    font-weight: 400;
+  }
+  
+  .viewDetail_button:hover {
+    cursor: pointer;
+    text-decoration: none;
+    border-color: #252e59;
+    background: #252e59;
+    color: #fff;
+  }

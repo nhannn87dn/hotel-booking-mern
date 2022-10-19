@@ -1,0 +1,39 @@
+.booking_form .input_block{
+    margin: 20px 0;
+    display: flex;
+}
+.booking_form  label {
+    color: #555;
+    font-size: 14px;
+    font-size: .875rem;
+    flex-basis: 70.667px;
+    align-self: center;
+}
+.booking_form  label~*{
+    flex:  1;
+}
+.booking_form input, .booking_form select {
+    border-color:  #e4e4e4;
+    color: #666;
+    border-radius: 0;
+    font-size: 1rem;
+    padding: .687em 1em;
+
+}
+
+.booking_form .input_date, .booking_form .input_person {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.booking_form button{
+    width: 100%;
+    display: block;
+    margin-top: 2em;
+}
+.booking_form button:hover{
+    border-color: #252e59;
+    background: #252e59;
+    color: #fff;
+}
+

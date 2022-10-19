@@ -1,0 +1,21 @@
+.section_wrapper{
+    padding: 0 5em;
+}
+
+@media (max-width: 480px){
+    .section_wrapper{
+        padding: 0 2em;
+    }
+    
+}
+
+@media (max-width: 375px){
+   
+    .flex_columns_2 {
+        row-gap: 1em;
+    }
+    .flex_column_2 {
+        flex-basis: 100%
+    }
+       
+}

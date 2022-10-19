@@ -1,0 +1,16 @@
+.form_wrapper {
+    position: relative;
+    max-width: 70%;
+}
+.form_field {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+}
+.custom_button:hover{
+    cursor: pointer;
+    text-decoration: none;
+    border-color: #252e59;
+    background: #252e59;
+    color: #fff;
+}

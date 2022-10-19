@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "6344224bc762d96362bfce06"
+  },
+  "appName": "Sochi Hotel",
+  "metaTitle": "Sochi Hotel Best Choise for your holidays",
+  "metaDescription": "Sochi Hotel Best Choise for your holidays. Booking now !",
+  "hotline": "1.954.456.6789",
+  "name": "Sochi Hotel",
+  "telephone": "1.954.456.6789",
+  "address": "3015 Grand Ave, Coconut Grove, Merrick Way, FL 12345",
+  "email": "hello@sochihotel.com",
+  "taxFee": 0.08
+}]

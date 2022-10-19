@@ -1,0 +1,14 @@
+.orderBookingWapper {
+    padding: 3em;
+    box-shadow: 0 8px 20px 0 rgb(37 46 89 / 10%);
+}
+
+.total {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+.total li {
+    display: flex;
+    justify-content: space-between;
+}

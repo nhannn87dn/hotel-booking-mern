@@ -1,0 +1,27 @@
+.section_wrapper{
+    padding: 0 5em;
+}
+@media (max-width: 480px){
+    .section_wrapper{
+        padding: 0 2em;
+    }
+    .flex_columns_4 {
+        row-gap: 2em;
+    }
+    .flex_column_4 {
+        flex-basis: calc((100% - 2em) / 2)
+    }
+    
+    
+}
+
+@media (max-width: 375px){
+   
+    .flex_columns_4 {
+        row-gap: 1em;
+    }
+    .flex_column_4 {
+        flex-basis: 100%
+    }
+       
+}

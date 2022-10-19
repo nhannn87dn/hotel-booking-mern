@@ -1,0 +1,67 @@
+# create new Room
+POST http://localhost:3001/api/v1/rooms HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+    "name": "Classic Double Room",
+    "metaTitle": "Classic Double Room best Price",
+    "metaDescription": "Classic Double Room are designed in open-concept living area and have many facilities. Best Price. Booking now !",
+    "pricePerNight": 159,
+    "priceChildren": 75,
+    "content": "Have lots of in-room facilities and are designed in open-concept living area.",
+    "guestCapacity": 2,
+    "numOfBeds": 1,
+    "typeOfBeds": "Queen bed",
+    "area": "25m2",
+    "ratings": 5,
+    "numOfReviews": 36,
+    "category" : "Double",
+    "user": "631c3fe8ed193981c34c47ce"
+}
+
+### UPDATE
+PUT http://localhost:3001/api/v1/rooms/633efe975ba09351eed6cd81 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+{
+   
+}
+
+
+###
+# Get ALl rooms - Public request
+GET http://localhost:3001/api/v1/rooms/list HTTP/1.1
+
+###
+# Get ALl rooms with conditions
+GET http://localhost:3001/api/v1/rooms?keyword=single HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzFjM2ZlOGVkMTkzOTgxYzM0YzQ3Y2UiLCJlbWFpbCI6Im5oYW5ubjg3ZG5AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjY0NTA5MDA4fQ.s6uTYu1lONG2VEuV_XFzSC6UkqWAnoY8zZEjFoF73b8
+
+
+###
+# Search empty rooms
+POST http://localhost:3001/api/v1/rooms/search HTTP/1.1
+content-type: application/json
+
+{
+ "checkInDate": "2022-10-17",
+ "checkOutDate": "2022-10-19",
+ "guestCapacity": 2,
+ "numOfRooms": 1
+}
+
+###
+# check roomAvailable
+POST http://localhost:3001/api/v1/rooms/search?sortBy=pricePerNight&sortType=ASC HTTP/1.1
+content-type: application/json
+
+{
+ "checkInDate": "2022-10-15",
+ "checkOutDate": "2022-10-19",
+ "guestCapacity": 2,
+ "numOfRooms": 1,
+ "roomId": "633eddb9d3fd295dbe5de078"
+}
